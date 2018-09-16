@@ -9,6 +9,7 @@ class Robot
   }
 
   DEFAULT_STEP_DISTANCE = 1
+  DEFAULT_TURNING_ANGLE = 90
 
   def place(position, orientation)
     self.position = position
@@ -32,11 +33,11 @@ class Robot
   end
 
   def turn_left
-    set_direction(direction + 90)
+    set_direction(direction + DEFAULT_TURNING_ANGLE)
   end
 
   def turn_right
-    set_direction(direction - 90)
+    set_direction(direction - DEFAULT_TURNING_ANGLE)
   end
 
   def position_ahead
