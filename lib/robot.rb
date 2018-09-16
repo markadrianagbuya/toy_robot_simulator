@@ -13,4 +13,16 @@ class Robot
   def y_position
     position.y
   end
+
+  def turn_left
+    if orientation == "NORTH"
+      self.orientation = "WEST"
+    elsif orientation == "WEST"
+      self.orientation = "SOUTH"
+    elsif orientation == "SOUTH"
+      self.orientation = "EAST"
+    elsif orientation == "EAST"
+      self.orientation = "NORTH"
+    end
+  end
 end
