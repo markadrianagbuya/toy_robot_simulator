@@ -1,13 +1,23 @@
 class Robot
-  attr_accessor :position, :orientation
+  attr_accessor :position, :orientation, :direction
 
   def place(position, orientation)
     self.position = position
     self.orientation = orientation
+    self.direction = orientation_to_direction(orientation)
   end
 
   def placed?
     [position, orientation].all?
+  end
+
+  def orientation
+    case direction
+    when 0 then "EAST"
+    when 90 then "NORTH"
+    when 180 then "WEST"
+    when 270 then "SOUTH"
+    end
   end
 
   def x_position
@@ -19,27 +29,11 @@ class Robot
   end
 
   def turn_left
-    if orientation == "NORTH"
-      self.orientation = "WEST"
-    elsif orientation == "WEST"
-      self.orientation = "SOUTH"
-    elsif orientation == "SOUTH"
-      self.orientation = "EAST"
-    elsif orientation == "EAST"
-      self.orientation = "NORTH"
-    end
+    set_direction(direction + 90)
   end
 
   def turn_right
-    if orientation == "NORTH"
-      self.orientation = "EAST"
-    elsif orientation == "WEST"
-      self.orientation = "NORTH"
-    elsif orientation == "SOUTH"
-      self.orientation = "WEST"
-    elsif orientation == "EAST"
-      self.orientation = "SOUTH"
-    end
+    set_direction(direction - 90)
   end
 
   def position_ahead
@@ -51,6 +45,21 @@ class Robot
       Position.new(x: x_position, y: y_position + 1)
     elsif orientation == "EAST"
       Position.new(x: x_position + 1, y: y_position)
+    end
+  end
+
+  private
+
+  def set_direction(direction)
+    self.direction = direction % 360
+  end
+
+  def orientation_to_direction(orientation)
+    case orientation
+    when "EAST" then 0
+    when "NORTH" then 90
+    when "WEST" then 180
+    when "SOUTH" then 270
     end
   end
 end
