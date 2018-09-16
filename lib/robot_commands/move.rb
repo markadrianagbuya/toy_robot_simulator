@@ -15,7 +15,11 @@ module RobotCommands
     private
 
     def valid_position?(position)
-      [position.x, position.y].max < TABLE_SIZE && [position.x, position.y].min >= 0
+      position_on_table?(position, TABLE_SIZE)
+    end
+
+    def position_on_table?(position, table_size)
+      [position.x, position.y].max < table_size && [position.x, position.y].min >= 0
     end
   end
 end
