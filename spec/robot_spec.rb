@@ -39,4 +39,34 @@ RSpec.describe 'Robot' do
       expect(robot.orientation).to eq "NORTH"
     end
   end
+
+  describe "#turn_right" do
+    it "faces east after turning right when facing north" do
+      robot = Robot.new
+      robot.place(Position.new(x: 1, y: 2), "NORTH")
+      robot.turn_right
+      expect(robot.orientation).to eq "EAST"
+    end
+
+    it "faces north after turning right when facing west" do
+      robot = Robot.new
+      robot.place(Position.new(x: 1, y: 2), "WEST")
+      robot.turn_right
+      expect(robot.orientation).to eq "NORTH"
+    end
+
+    it "faces west after turning right when facing south" do
+      robot = Robot.new
+      robot.place(Position.new(x: 1, y: 2), "SOUTH")
+      robot.turn_right
+      expect(robot.orientation).to eq "WEST"
+    end
+
+    it "faces south after turning right when facing east" do
+      robot = Robot.new
+      robot.place(Position.new(x: 1, y: 2), "EAST")
+      robot.turn_right
+      expect(robot.orientation).to eq "SOUTH"
+    end
+  end
 end
