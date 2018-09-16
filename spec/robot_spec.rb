@@ -69,4 +69,42 @@ RSpec.describe 'Robot' do
       expect(robot.orientation).to eq "SOUTH"
     end
   end
+
+  describe "#move" do
+    it "moves down when facing south" do
+      robot = Robot.new
+      robot.place(Position.new(x: 1, y: 2), "SOUTH")
+      robot.move
+      expect(robot.y_position).to eq 1
+      expect(robot.x_position).to eq 1
+      expect(robot.orientation).to eq "SOUTH"
+    end
+
+    it "moves left when facing west" do
+      robot = Robot.new
+      robot.place(Position.new(x: 1, y: 2), "WEST")
+      robot.move
+      expect(robot.y_position).to eq 2
+      expect(robot.x_position).to eq 0
+      expect(robot.orientation).to eq "WEST"
+    end
+
+    it "moves up when facing north" do
+      robot = Robot.new
+      robot.place(Position.new(x: 1, y: 2), "NORTH")
+      robot.move
+      expect(robot.y_position).to eq 3
+      expect(robot.x_position).to eq 1
+      expect(robot.orientation).to eq "NORTH"
+    end
+
+    it "moves right when facing east" do
+      robot = Robot.new
+      robot.place(Position.new(x: 1, y: 2), "EAST")
+      robot.move
+      expect(robot.y_position).to eq 2
+      expect(robot.x_position).to eq 2
+      expect(robot.orientation).to eq "EAST"
+    end
+  end
 end

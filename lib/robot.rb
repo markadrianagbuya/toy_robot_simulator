@@ -37,4 +37,16 @@ class Robot
       self.orientation = "SOUTH"
     end
   end
+
+  def move
+    if orientation == "SOUTH"
+      self.position = Position.new(x: x_position, y: y_position - 1)
+    elsif orientation == "WEST"
+      self.position = Position.new(x: x_position - 1, y: y_position)
+    elsif orientation == "NORTH"
+      self.position = Position.new(x: x_position, y: y_position + 1)
+    elsif orientation == "EAST"
+      self.position = Position.new(x: x_position + 1, y: y_position)
+    end
+  end
 end

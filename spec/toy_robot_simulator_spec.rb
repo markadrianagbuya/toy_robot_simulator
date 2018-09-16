@@ -59,7 +59,7 @@ RSpec.describe ToyRobotSimulator do
     expect(simulator).to have_received(:puts).with("Output: 3,1,NORTH")
   end
 
- it "can accept multiple place commands for the robot" do
+  it "can accept multiple place commands for the robot" do
     simulator = ToyRobotSimulator.new
     simulation_commands = <<~INPUT
       PLACE 3,1,SOUTH
@@ -72,6 +72,21 @@ RSpec.describe ToyRobotSimulator do
 
     simulator.start
     expect(simulator).to have_received(:puts).with("Output: 2,4,EAST")
+  end
+
+  it "can accept commands for a robot to move forward" do
+    simulator = ToyRobotSimulator.new
+    simulation_commands = <<~INPUT
+      PLACE 3,1,SOUTH
+      MOVE
+      REPORT
+      EXIT
+    INPUT
+    stub_user_inputs(simulator, simulation_commands)
+    allow(simulator).to receive(:puts)
+
+    simulator.start
+    expect(simulator).to have_received(:puts).with("Output: 3,0,SOUTH")
   end
 
   def stub_user_inputs(simulator, simulation_commands)
