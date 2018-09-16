@@ -1,30 +1,33 @@
 require 'robot'
 require 'position'
+require 'robot_commands'
 
 class ToyRobotSimulator
   TABLE_SIZE = 5
 
   def start
     robot = Robot.new
-    while (command = gets.chomp) != "EXIT"
-      if robot.placed?
-        if command == "REPORT"
-          output = [robot.x_position, robot.y_position, robot.orientation]
-          puts "Output: #{output.join(",")}"
-        elsif command == "LEFT"
-          robot.turn_left
-        elsif command == "RIGHT"
-          robot.turn_right
-        elsif command == "MOVE"
-          position_ahead = robot.position_ahead
-          robot.place(position_ahead, robot.orientation) if valid_position?(position_ahead)
+    while (user_command = gets.chomp) != "EXIT"
+      
+      command_class = RobotCommands::ALL.detect { |robot_command| robot_command.can_handle?(user_command) }
+      if command_class
+        command_class.new.apply(robot)
+      else
+        if robot.placed?
+          if user_command == "REPORT"
+            output = [robot.x_position, robot.y_position, robot.orientation]
+            puts "Output: #{output.join(",")}"
+          elsif user_command == "MOVE"
+            position_ahead = robot.position_ahead
+            robot.place(position_ahead, robot.orientation) if valid_position?(position_ahead)
+          end
         end
-      end
-      if command.split(" ").first == "PLACE"
-        _place_command, position_orientation = command.split(" ")
-        x, y, orientation = position_orientation.split(",")
+        if user_command.split(" ").first == "PLACE"
+          _place_command, position_orientation = user_command.split(" ")
+          x, y, orientation = position_orientation.split(",")
 
-        robot.place(Position.new(x: x.to_i, y: y.to_i), orientation)
+          robot.place(Position.new(x: x.to_i, y: y.to_i), orientation)
+        end
       end
     end
   end
