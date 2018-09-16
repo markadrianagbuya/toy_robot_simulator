@@ -14,7 +14,7 @@ class ToyRobotSimulator
       elsif command == "RIGHT"
         robot.turn_right
       elsif command == "MOVE"
-        robot.move
+        robot.place(robot.position_ahead, robot.orientation)
       else
         _place_command, position_orientation = command.split(" ")
         x, y, orientation = position_orientation.split(",")

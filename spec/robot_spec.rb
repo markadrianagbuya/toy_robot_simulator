@@ -70,41 +70,45 @@ RSpec.describe 'Robot' do
     end
   end
 
-  describe "#move" do
+  describe "#position_ahead" do
     it "moves down when facing south" do
       robot = Robot.new
       robot.place(Position.new(x: 1, y: 2), "SOUTH")
-      robot.move
-      expect(robot.y_position).to eq 1
-      expect(robot.x_position).to eq 1
-      expect(robot.orientation).to eq "SOUTH"
+
+      position_ahead = robot.position_ahead
+
+      expect(position_ahead.y).to eq 1
+      expect(position_ahead.x).to eq 1
     end
 
     it "moves left when facing west" do
       robot = Robot.new
       robot.place(Position.new(x: 1, y: 2), "WEST")
-      robot.move
-      expect(robot.y_position).to eq 2
-      expect(robot.x_position).to eq 0
-      expect(robot.orientation).to eq "WEST"
+
+      position_ahead = robot.position_ahead
+
+      expect(position_ahead.y).to eq 2
+      expect(position_ahead.x).to eq 0
     end
 
     it "moves up when facing north" do
       robot = Robot.new
       robot.place(Position.new(x: 1, y: 2), "NORTH")
-      robot.move
-      expect(robot.y_position).to eq 3
-      expect(robot.x_position).to eq 1
-      expect(robot.orientation).to eq "NORTH"
+      
+      position_ahead = robot.position_ahead
+
+      expect(position_ahead.y).to eq 3
+      expect(position_ahead.x).to eq 1
     end
 
     it "moves right when facing east" do
       robot = Robot.new
       robot.place(Position.new(x: 1, y: 2), "EAST")
-      robot.move
-      expect(robot.y_position).to eq 2
-      expect(robot.x_position).to eq 2
-      expect(robot.orientation).to eq "EAST"
+
+      position_ahead = robot.position_ahead
+
+      expect(position_ahead.y).to eq 2
+      expect(position_ahead.x).to eq 2
     end
   end
 end

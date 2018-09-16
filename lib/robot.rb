@@ -38,15 +38,15 @@ class Robot
     end
   end
 
-  def move
+  def position_ahead
     if orientation == "SOUTH"
-      self.position = Position.new(x: x_position, y: y_position - 1)
+      Position.new(x: x_position, y: y_position - 1)
     elsif orientation == "WEST"
-      self.position = Position.new(x: x_position - 1, y: y_position)
+      Position.new(x: x_position - 1, y: y_position)
     elsif orientation == "NORTH"
-      self.position = Position.new(x: x_position, y: y_position + 1)
+      Position.new(x: x_position, y: y_position + 1)
     elsif orientation == "EAST"
-      self.position = Position.new(x: x_position + 1, y: y_position)
+      Position.new(x: x_position + 1, y: y_position)
     end
   end
 end
