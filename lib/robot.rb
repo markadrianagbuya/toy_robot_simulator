@@ -1,6 +1,13 @@
 class Robot
   attr_accessor :position, :orientation, :direction
 
+  DIRECTION_TO_ORIENTATION_MAPPING = {
+    "EAST" => 0,
+    "NORTH" => 90,
+    "WEST" => 180,
+    "SOUTH" => 270
+  }
+
   def place(position, orientation)
     self.position = position
     self.orientation = orientation
@@ -12,12 +19,7 @@ class Robot
   end
 
   def orientation
-    case direction
-    when 0 then "EAST"
-    when 90 then "NORTH"
-    when 180 then "WEST"
-    when 270 then "SOUTH"
-    end
+    DIRECTION_TO_ORIENTATION_MAPPING.invert[direction]
   end
 
   def x_position
@@ -55,11 +57,6 @@ class Robot
   end
 
   def orientation_to_direction(orientation)
-    case orientation
-    when "EAST" then 0
-    when "NORTH" then 90
-    when "WEST" then 180
-    when "SOUTH" then 270
-    end
+    DIRECTION_TO_ORIENTATION_MAPPING[orientation]
   end
 end
