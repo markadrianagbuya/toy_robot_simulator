@@ -111,6 +111,24 @@ RSpec.describe ToyRobotSimulator do
     expect(simulator).to have_received(:puts).with("Output: 2,0,SOUTH")
   end
 
+  it "commands before a placement are ignored" do
+    simulator = ToyRobotSimulator.new
+    simulation_commands = <<~INPUT
+      REPORT
+      RIGHT
+      MOVE
+      LEFT
+      PLACE 2,1,EAST
+      REPORT
+      EXIT
+    INPUT
+    stub_user_inputs(simulator, simulation_commands)
+    allow(simulator).to receive(:puts)
+
+    simulator.start
+    expect(simulator).to have_received(:puts).once
+  end
+
   def stub_user_inputs(simulator, simulation_commands)
     input_lines = simulation_commands.split("\n").map{ |command| command + "\n" }
     allow(simulator).to receive(:gets).and_return(*input_lines)

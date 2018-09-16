@@ -6,6 +6,10 @@ class Robot
     self.orientation = orientation
   end
 
+  def placed?
+    [position, orientation].all?
+  end
+
   def x_position
     position.x
   end

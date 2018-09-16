@@ -10,6 +10,18 @@ RSpec.describe 'Robot' do
     expect(robot.orientation).to eq "NORTH"
   end
 
+  describe "#placed?" do
+    it "returns true if the robot has been placed" do
+      robot = Robot.new
+      robot.place(Position.new(x: 1, y: 1), "NORTH")
+      expect(robot.placed?).to be true
+    end
+    it "returns false if the robot has not been placed" do
+      robot = Robot.new
+      expect(robot.placed?).to be false
+    end
+  end
+
   describe "#turn_left" do
     it "faces west after turning left when facing north" do
       robot = Robot.new
