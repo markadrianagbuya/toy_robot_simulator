@@ -30,10 +30,4 @@ class ToyRobotSimulator
       end
     end
   end
-
-  private
-
-  def max_table_position
-    TABLE_SIZE - 1 # since the position is zero-referenced the final position is one less
-  end
 end
