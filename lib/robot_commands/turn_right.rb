@@ -4,7 +4,7 @@ module RobotCommands
       user_command == "RIGHT"
     end
 
-    def apply(robot, _simulator)
+    def apply(_user_command, robot, simulator)
       return unless robot.placed?
       robot.turn_right
     end

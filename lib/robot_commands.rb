@@ -1,8 +1,9 @@
-require 'robot_commands/turn_left.rb'
-require 'robot_commands/turn_right.rb'
-require 'robot_commands/report.rb'
-require 'robot_commands/move.rb'
+require 'robot_commands/turn_left'
+require 'robot_commands/turn_right'
+require 'robot_commands/report'
+require 'robot_commands/move'
+require 'robot_commands/place'
 
 module RobotCommands
-  ALL = [TurnLeft, TurnRight, Report, Move]
+  ALL = [TurnLeft, TurnRight, Report, Move, Place]
 end

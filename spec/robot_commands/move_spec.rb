@@ -22,7 +22,7 @@ RSpec.describe RobotCommands::Move do
       robot = Robot.new
       robot.place(Position.new(x: 1, y: 2), "NORTH")
       simulator = instance_double(ToyRobotSimulator).as_null_object
-      RobotCommands::Move.new.apply(robot, simulator)
+      RobotCommands::Move.new.apply("MOVE", robot, simulator)
       expect(robot.x_position).to eq 1
       expect(robot.y_position).to eq 3
     end
@@ -30,7 +30,7 @@ RSpec.describe RobotCommands::Move do
     it "doesn't apply when the robot is not placed" do
       robot = Robot.new
       simulator = instance_double(ToyRobotSimulator).as_null_object
-      expect { RobotCommands::Move.new.apply(robot, simulator) }.to_not raise_error
+      expect { RobotCommands::Move.new.apply("MOVE", robot, simulator) }.to_not raise_error
     end
   end
 end

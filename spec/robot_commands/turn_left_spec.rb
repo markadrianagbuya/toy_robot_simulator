@@ -18,13 +18,13 @@ RSpec.describe RobotCommands::TurnLeft do
   describe "#apply" do
     it "calls turn_left on the robot" do
       robot = spy(placed: true)
-      RobotCommands::TurnLeft.new.apply(robot, double)
+      RobotCommands::TurnLeft.new.apply("LEFT", robot, double)
       expect(robot).to have_received(:turn_left)
     end
 
     it "does not call turn_left on the robot when it is not placed" do
       robot = spy(placed?: false)
-      RobotCommands::TurnLeft.new.apply(robot, double)
+      RobotCommands::TurnLeft.new.apply("LEFT", robot, double)
       expect(robot).to_not have_received(:turn_left)
     end
   end

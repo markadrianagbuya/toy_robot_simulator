@@ -22,14 +22,14 @@ RSpec.describe RobotCommands::Report do
       robot = Robot.new
       robot.place(Position.new(x: 1, y: 2), "NORTH")
       simulator = instance_double(ToyRobotSimulator).as_null_object
-      RobotCommands::Report.new.apply(robot, simulator)
+      RobotCommands::Report.new.apply("REPORT", robot, simulator)
       expect(simulator).to have_received(:print).with("Output: 1,2,NORTH")
     end
 
     it "doesn't apply when the robot is not placed" do
       robot = Robot.new
       simulator = instance_double(ToyRobotSimulator).as_null_object
-      RobotCommands::Report.new.apply(robot, simulator)
+      RobotCommands::Report.new.apply("REPORT", robot, simulator)
       expect(simulator).to_not have_received(:print)
     end
   end
