@@ -8,6 +8,18 @@ RSpec.describe RobotCommands::Place do
       expect(RobotCommands::Place.can_handle?("PLACE 1,2,EAST")).to eq true
     end
 
+    it "is false when the user command does not contain coordinates or orientation" do
+      expect(RobotCommands::Place.can_handle?("PLACE")).to eq false
+    end
+
+    it "is false when the user command contains an unrecognised orientation" do
+      expect(RobotCommands::Place.can_handle?("PLACE 1,2,RANDOM")).to eq false
+    end
+
+    it "is false when the user command contains an non-integer coordinate" do
+      expect(RobotCommands::Place.can_handle?("PLACE 1,A,WEST")).to eq false
+    end
+
     it "is false when the user command is not 'PLACE'" do
       expect(RobotCommands::Place.can_handle?("RIGHT")).to eq false
     end

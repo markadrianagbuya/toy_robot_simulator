@@ -1,7 +1,7 @@
 module RobotCommands
   class Place
     def self.can_handle?(user_command)
-      user_command.split(" ").first == "PLACE"
+      /PLACE \d,\d,(EAST|NORTH|WEST|SOUTH)/.match?(user_command)
     end
 
     def apply(user_command, robot, _simulator)
