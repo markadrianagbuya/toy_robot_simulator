@@ -89,6 +89,24 @@ RSpec.describe ToyRobotSimulator do
     expect(simulator).to have_received(:puts).with("Output: 3,0,SOUTH")
   end
 
+  it "can only move within the confines of a 5x5 table" do
+    simulator = ToyRobotSimulator.new
+    simulation_commands = <<~INPUT
+      PLACE 2,1,EAST
+      MOVE
+      MOVE
+      MOVE
+      MOVE
+      REPORT
+      EXIT
+    INPUT
+    stub_user_inputs(simulator, simulation_commands)
+    allow(simulator).to receive(:puts)
+
+    simulator.start
+    expect(simulator).to have_received(:puts).with("Output: 4,1,EAST")
+  end
+
   def stub_user_inputs(simulator, simulation_commands)
     input_lines = simulation_commands.split("\n").map{ |command| command + "\n" }
     allow(simulator).to receive(:gets).and_return(*input_lines)

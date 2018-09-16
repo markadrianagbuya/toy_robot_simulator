@@ -2,6 +2,8 @@ require 'robot'
 require 'position'
 
 class ToyRobotSimulator
+  TABLE_SIZE = 5
+
   def start
     robot = Robot.new
     while (command = gets.chomp) != "EXIT"
@@ -14,7 +16,10 @@ class ToyRobotSimulator
       elsif command == "RIGHT"
         robot.turn_right
       elsif command == "MOVE"
-        robot.place(robot.position_ahead, robot.orientation)
+        position_ahead = robot.position_ahead
+        if position_ahead.x < TABLE_SIZE && position_ahead.y < TABLE_SIZE
+          robot.place(position_ahead, robot.orientation)
+        end
       else
         _place_command, position_orientation = command.split(" ")
         x, y, orientation = position_orientation.split(",")
@@ -22,5 +27,11 @@ class ToyRobotSimulator
         robot.place(Position.new(x: x.to_i, y: y.to_i), orientation)
       end
     end
+  end
+
+  private
+
+  def max_table_position
+    TABLE_SIZE - 1 # since the position is zero-referenced the final position is one less
   end
 end
