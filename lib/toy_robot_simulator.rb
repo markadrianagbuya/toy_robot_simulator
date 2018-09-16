@@ -32,6 +32,6 @@ class ToyRobotSimulator
   private
 
   def valid_position?(position)
-    position.x < TABLE_SIZE && position.y < TABLE_SIZE && position.x >= 0 && position.y >= 0
+    [position.x, position.y].max < TABLE_SIZE && [position.x, position.y].min >= 0
   end
 end
