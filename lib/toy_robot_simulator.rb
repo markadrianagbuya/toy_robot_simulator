@@ -17,7 +17,7 @@ class ToyRobotSimulator
         robot.turn_right
       elsif command == "MOVE"
         position_ahead = robot.position_ahead
-        if position_ahead.x < TABLE_SIZE && position_ahead.y < TABLE_SIZE
+        if position_ahead.x < TABLE_SIZE && position_ahead.y < TABLE_SIZE && position_ahead.x >= 0 && position_ahead.y >= 0
           robot.place(position_ahead, robot.orientation)
         end
       else

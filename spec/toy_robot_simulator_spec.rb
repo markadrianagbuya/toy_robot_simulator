@@ -96,6 +96,9 @@ RSpec.describe ToyRobotSimulator do
       MOVE
       MOVE
       MOVE
+      REPORT
+      PLACE 2,1,SOUTH
+      MOVE
       MOVE
       REPORT
       EXIT
@@ -105,6 +108,7 @@ RSpec.describe ToyRobotSimulator do
 
     simulator.start
     expect(simulator).to have_received(:puts).with("Output: 4,1,EAST")
+    expect(simulator).to have_received(:puts).with("Output: 2,0,SOUTH")
   end
 
   def stub_user_inputs(simulator, simulation_commands)
