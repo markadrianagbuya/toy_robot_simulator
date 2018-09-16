@@ -11,16 +11,11 @@ class ToyRobotSimulator
       
       command_class = RobotCommands::ALL.detect { |robot_command| robot_command.can_handle?(user_command) }
       if command_class
-        command_class.new.apply(robot)
+        command_class.new.apply(robot, self)
       else
-        if robot.placed?
-          if user_command == "REPORT"
-            output = [robot.x_position, robot.y_position, robot.orientation]
-            puts "Output: #{output.join(",")}"
-          elsif user_command == "MOVE"
-            position_ahead = robot.position_ahead
-            robot.place(position_ahead, robot.orientation) if valid_position?(position_ahead)
-          end
+        if robot.placed? && user_command == "MOVE"
+          position_ahead = robot.position_ahead
+          robot.place(position_ahead, robot.orientation) if valid_position?(position_ahead)
         end
         if user_command.split(" ").first == "PLACE"
           _place_command, position_orientation = user_command.split(" ")
@@ -30,6 +25,10 @@ class ToyRobotSimulator
         end
       end
     end
+  end
+
+  def print(text)
+    puts(text)
   end
   
   private
