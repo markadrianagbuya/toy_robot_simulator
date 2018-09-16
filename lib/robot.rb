@@ -1,5 +1,5 @@
 class Robot
-  attr_accessor :position, :orientation, :direction
+  attr_accessor :position, :direction
 
   DIRECTION_TO_ORIENTATION_MAPPING = {
     "EAST" => 0,
@@ -10,7 +10,6 @@ class Robot
 
   def place(position, orientation)
     self.position = position
-    self.orientation = orientation
     self.direction = orientation_to_direction(orientation)
   end
 
