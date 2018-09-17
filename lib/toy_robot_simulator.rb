@@ -9,8 +9,4 @@ class ToyRobotSimulator
       command_class.new.apply(user_command, robot) if command_class
     end
   end
-
-  def print(text)
-    puts(text)
-  end
 end
