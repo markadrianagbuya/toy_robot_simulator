@@ -38,7 +38,7 @@ RSpec.describe ToyRobotSimulator do
     expect { simulator.start }.to output("Output: 3,1,EAST\n").to_stdout
   end
 
-  it "can accept commands for a robot to be turned left" do
+  it "can accept commands for a robot to be turned right" do
     simulator = ToyRobotSimulator.new
     simulation_commands = <<~INPUT
       PLACE 3,1,WEST

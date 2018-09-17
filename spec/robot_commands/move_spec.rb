@@ -18,7 +18,7 @@ RSpec.describe RobotCommands::Move do
   end
 
   describe "#apply" do
-    it "prints out the robot when the robot is placed" do
+    it "moves the robot to the next position when the robot is placed" do
       robot = Robot.new
       robot.place(Position.new(x: 1, y: 2), "NORTH")
       RobotCommands::Move.new.apply("MOVE", robot)
