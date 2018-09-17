@@ -1,21 +1,13 @@
 require 'geometry' 
 
 class Robot
-  attr_accessor :position, :direction
-
-  DIRECTION_TO_ORIENTATION_MAPPING = {
-    "EAST" => 0,
-    "NORTH" => 90,
-    "WEST" => 180,
-    "SOUTH" => 270
-  }
-
-  DEFAULT_STEP_DISTANCE = 1
-  DEFAULT_TURNING_ANGLE = 90
+  def initialize(step_distance: default_step_distance)
+    self.step_distance = step_distance
+  end
 
   def place(position, orientation)
     self.position = position
-    self.direction = orientation_to_direction(orientation)
+    self.direction = Geometry.polar_angle_from_cardinal_direction(orientation)
   end
 
   def placed?
@@ -23,7 +15,7 @@ class Robot
   end
 
   def orientation
-    DIRECTION_TO_ORIENTATION_MAPPING.invert[direction]
+    Geometry.cardinal_direction_from_polar_angle(direction)
   end
 
   def x_position
@@ -35,25 +27,31 @@ class Robot
   end
 
   def turn_left
-    set_direction(direction + DEFAULT_TURNING_ANGLE)
+    set_direction(direction + turning_angle)
   end
 
   def turn_right
-    set_direction(direction - DEFAULT_TURNING_ANGLE)
+    set_direction(direction - turning_angle)
   end
 
   def position_ahead
-    polar_translation_vector = Geometry::PolarVector.new(polar_angle: direction, magnitude: DEFAULT_STEP_DISTANCE)
+    polar_translation_vector = Geometry::PolarVector.new(polar_angle: direction, magnitude: step_distance)
     polar_translation_vector.translate_position(position)
   end
 
   private
 
-  def set_direction(direction)
-    self.direction = direction % 360
+  attr_accessor :step_distance, :position, :direction
+
+  def default_step_distance
+    1
   end
 
-  def orientation_to_direction(orientation)
-    DIRECTION_TO_ORIENTATION_MAPPING[orientation]
+  def turning_angle
+    90 # degrees
+  end
+
+  def set_direction(direction)
+    self.direction = direction % 360
   end
 end

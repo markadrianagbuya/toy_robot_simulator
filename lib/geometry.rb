@@ -2,6 +2,21 @@ require 'ostruct'
 require 'position'
 
 module Geometry
+  CARDINAL_DIRECTION_TO_POLAR_ANGLE_MAPPING = {
+    "EAST" => 0,
+    "NORTH" => 90,
+    "WEST" => 180,
+    "SOUTH" => 270
+  }
+
+  def self.cardinal_direction_from_polar_angle(polar_angle)
+    CARDINAL_DIRECTION_TO_POLAR_ANGLE_MAPPING.invert[polar_angle]
+  end
+
+  def self.polar_angle_from_cardinal_direction(cardinal_direction)
+    CARDINAL_DIRECTION_TO_POLAR_ANGLE_MAPPING[cardinal_direction]
+  end
+
   class PolarVector
     attr_accessor :polar_angle, :magnitude
 
