@@ -1,6 +1,6 @@
 require 'robot_commands/report'
-require 'toy_robot_simulator'
 require 'robot'
+require 'position'
 
 RSpec.describe RobotCommands::Report do
   describe ".can_handle?" do

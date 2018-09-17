@@ -1,5 +1,5 @@
 require 'robot_commands/move'
-require 'toy_robot_simulator'
+require 'position'
 require 'robot'
 
 RSpec.describe RobotCommands::Move do
