@@ -13,7 +13,7 @@ RSpec.describe ToyRobotSimulator do
     expect { simulator.start }.to output("Output: 1,2,NORTH\n").to_stdout
   end
 
- it "can be placed in another position" do
+  it "can be placed in another position" do
     simulator = ToyRobotSimulator.new
     simulation_commands = <<~INPUT
       PLACE 3,1,SOUTH
@@ -25,7 +25,7 @@ RSpec.describe ToyRobotSimulator do
     expect { simulator.start }.to output("Output: 3,1,SOUTH\n").to_stdout
   end
 
- it "can accept commands for a robot to be turned left" do
+  it "can accept commands for a robot to be turned left" do
     simulator = ToyRobotSimulator.new
     simulation_commands = <<~INPUT
       PLACE 3,1,SOUTH
@@ -38,7 +38,7 @@ RSpec.describe ToyRobotSimulator do
     expect { simulator.start }.to output("Output: 3,1,EAST\n").to_stdout
   end
 
- it "can accept commands for a robot to be turned left" do
+  it "can accept commands for a robot to be turned left" do
     simulator = ToyRobotSimulator.new
     simulation_commands = <<~INPUT
       PLACE 3,1,WEST
@@ -113,7 +113,7 @@ RSpec.describe ToyRobotSimulator do
   end
 
   def stub_user_inputs(simulator, simulation_commands)
-    input_lines = simulation_commands.split("\n").map{ |command| command + "\n" }
+    input_lines = simulation_commands.split("\n").map { |command| command + "\n" }
     allow(simulator).to receive(:gets).and_return(*input_lines)
   end
 end

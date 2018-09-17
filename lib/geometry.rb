@@ -33,9 +33,9 @@ module Geometry
     private
     
     def to_cartesian_form
-      y = Math::sin(polar_angle_in_radians) * magnitude
-      x = Math::cos(polar_angle_in_radians) * magnitude
-      OpenStruct.new(x: x.round,y: y.round)
+      y = Math.sin(polar_angle_in_radians) * magnitude
+      x = Math.cos(polar_angle_in_radians) * magnitude
+      OpenStruct.new(x: x.round, y: y.round)
     end
 
     def polar_angle_in_radians

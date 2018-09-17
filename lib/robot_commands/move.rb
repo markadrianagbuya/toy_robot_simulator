@@ -8,6 +8,7 @@ module RobotCommands
 
     def apply(_user_command, robot)
       return unless robot.placed?
+
       position_ahead = robot.position_ahead
       robot.place(position_ahead, robot.orientation) if valid_position?(position_ahead)
     end

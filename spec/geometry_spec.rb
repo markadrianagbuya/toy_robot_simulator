@@ -39,7 +39,7 @@ module Geometry
           translated_position = vector.translate_position(Position.new(x: 1, y: 1))
           expect(translated_position.x).to eq 0
           expect(translated_position.y).to eq 1
-          
+
           translated_position = vector.translate_position(Position.new(x: 3, y: 3))
           expect(translated_position.x).to eq 2
           expect(translated_position.y).to eq 3
@@ -53,7 +53,7 @@ module Geometry
           translated_position = vector.translate_position(Position.new(x: 1, y: 1))
           expect(translated_position.x).to eq 1
           expect(translated_position.y).to eq 0
-          
+
           translated_position = vector.translate_position(Position.new(x: 3, y: 3))
           expect(translated_position.x).to eq 3
           expect(translated_position.y).to eq 2

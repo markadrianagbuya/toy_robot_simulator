@@ -106,7 +106,7 @@ RSpec.describe 'Robot' do
     it "moves up when facing north" do
       robot = Robot.new
       robot.place(Position.new(x: 1, y: 2), "NORTH")
-      
+
       position_ahead = robot.position_ahead
 
       expect(position_ahead.y).to eq 3

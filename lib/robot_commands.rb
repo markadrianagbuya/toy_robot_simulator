@@ -5,5 +5,7 @@ require 'robot_commands/move'
 require 'robot_commands/place'
 
 module RobotCommands
-  ALL = [TurnLeft, TurnRight, Report, Move, Place]
+  def self.all
+    [TurnLeft, TurnRight, Report, Move, Place]
+  end
 end

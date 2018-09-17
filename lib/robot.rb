@@ -1,4 +1,4 @@
-require 'geometry' 
+require 'geometry'
 
 class Robot
   def initialize(step_distance: default_step_distance)

@@ -6,8 +6,7 @@ module RobotCommands
 
     def apply(_user_command, robot)
       return unless robot.placed?
-      #output = [robot.x_position, robot.y_position, robot.orientation]
-     # puts "Output: #{output.join(",")}"
+
       puts "Output: #{robot.x_position},#{robot.y_position},#{robot.orientation}"
     end
   end

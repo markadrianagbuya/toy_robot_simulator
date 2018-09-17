@@ -6,6 +6,7 @@ module RobotCommands
 
     def apply(_user_command, robot)
       return unless robot.placed?
+
       robot.turn_left
     end
   end
