@@ -7,7 +7,7 @@ module RobotCommands
     def apply(_user_command, robot, simulator)
       return unless robot.placed?
       output = [robot.x_position, robot.y_position, robot.orientation]
-      simulator.print("Output: #{output.join(",")}")
+      puts "Output: #{output.join(",")}"
     end
   end
 end
