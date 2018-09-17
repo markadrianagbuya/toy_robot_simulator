@@ -11,9 +11,16 @@ module RobotCommands
     end
 
     def apply(user_command, robot)
-      x, y, orientation = self.class.place_format.match(user_command).captures
+      x, y, orientation = place_args_from_command(user_command)
+      position = Position.new(x: x.to_i, y: y.to_i)
 
-      robot.place(Position.new(x: x.to_i, y: y.to_i), orientation)
+      robot.place(position, orientation)
+    end
+
+    private
+
+    def place_args_from_command(command)
+      self.class.place_format.match(command).captures
     end
   end
 end
