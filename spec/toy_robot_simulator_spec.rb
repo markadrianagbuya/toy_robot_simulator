@@ -9,10 +9,8 @@ RSpec.describe ToyRobotSimulator do
       EXIT
     INPUT
     stub_user_inputs(simulator, simulation_commands)
-    allow(simulator).to receive(:puts)
 
-    simulator.start
-    expect(simulator).to have_received(:puts).with("Output: 1,2,NORTH")
+    expect { simulator.start }.to output("Output: 1,2,NORTH\n").to_stdout
   end
 
  it "can be placed in another position" do
@@ -23,10 +21,8 @@ RSpec.describe ToyRobotSimulator do
       EXIT
     INPUT
     stub_user_inputs(simulator, simulation_commands)
-    allow(simulator).to receive(:puts)
 
-    simulator.start
-    expect(simulator).to have_received(:puts).with("Output: 3,1,SOUTH")
+    expect { simulator.start }.to output("Output: 3,1,SOUTH\n").to_stdout
   end
 
  it "can accept commands for a robot to be turned left" do
@@ -38,10 +34,8 @@ RSpec.describe ToyRobotSimulator do
       EXIT
     INPUT
     stub_user_inputs(simulator, simulation_commands)
-    allow(simulator).to receive(:puts)
 
-    simulator.start
-    expect(simulator).to have_received(:puts).with("Output: 3,1,EAST")
+    expect { simulator.start }.to output("Output: 3,1,EAST\n").to_stdout
   end
 
  it "can accept commands for a robot to be turned left" do
@@ -53,10 +47,8 @@ RSpec.describe ToyRobotSimulator do
       EXIT
     INPUT
     stub_user_inputs(simulator, simulation_commands)
-    allow(simulator).to receive(:puts)
 
-    simulator.start
-    expect(simulator).to have_received(:puts).with("Output: 3,1,NORTH")
+    expect { simulator.start }.to output("Output: 3,1,NORTH\n").to_stdout
   end
 
   it "can accept multiple place commands for the robot" do
@@ -68,10 +60,8 @@ RSpec.describe ToyRobotSimulator do
       EXIT
     INPUT
     stub_user_inputs(simulator, simulation_commands)
-    allow(simulator).to receive(:puts)
 
-    simulator.start
-    expect(simulator).to have_received(:puts).with("Output: 2,4,EAST")
+    expect { simulator.start }.to output("Output: 2,4,EAST\n").to_stdout
   end
 
   it "can accept commands for a robot to move forward" do
@@ -83,10 +73,8 @@ RSpec.describe ToyRobotSimulator do
       EXIT
     INPUT
     stub_user_inputs(simulator, simulation_commands)
-    allow(simulator).to receive(:puts)
 
-    simulator.start
-    expect(simulator).to have_received(:puts).with("Output: 3,0,SOUTH")
+    expect { simulator.start }.to output("Output: 3,0,SOUTH\n").to_stdout
   end
 
   it "can only move within the confines of a 5x5 table" do
@@ -104,11 +92,8 @@ RSpec.describe ToyRobotSimulator do
       EXIT
     INPUT
     stub_user_inputs(simulator, simulation_commands)
-    allow(simulator).to receive(:puts)
 
-    simulator.start
-    expect(simulator).to have_received(:puts).with("Output: 4,1,EAST")
-    expect(simulator).to have_received(:puts).with("Output: 2,0,SOUTH")
+    expect { simulator.start }.to output("Output: 4,1,EAST\nOutput: 2,0,SOUTH\n").to_stdout
   end
 
   it "commands before a placement are ignored" do
@@ -123,10 +108,8 @@ RSpec.describe ToyRobotSimulator do
       EXIT
     INPUT
     stub_user_inputs(simulator, simulation_commands)
-    allow(simulator).to receive(:puts)
 
-    simulator.start
-    expect(simulator).to have_received(:puts).once
+    expect { simulator.start }.to output("Output: 2,1,EAST\n").to_stdout
   end
 
   def stub_user_inputs(simulator, simulation_commands)

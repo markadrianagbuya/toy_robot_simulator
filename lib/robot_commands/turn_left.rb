@@ -6,6 +6,7 @@ module RobotCommands
 
     def apply(_user_command, robot, simulator)
       return unless robot.placed?
+      #should this class be aware of how much to turn instead of the robot
       robot.turn_left
     end
   end
