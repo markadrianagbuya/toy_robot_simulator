@@ -1,3 +1,5 @@
+require 'geometry' 
+
 class Robot
   attr_accessor :position, :direction
 
@@ -41,16 +43,11 @@ class Robot
   end
 
   def position_ahead
-    y_translation = Math::sin(degrees_to_radians(direction)) * DEFAULT_STEP_DISTANCE
-    x_translation = Math::cos(degrees_to_radians(direction)) * DEFAULT_STEP_DISTANCE
-    Position.new(x: x_position + x_translation.round, y: y_position + y_translation.round)
+    polar_translation_vector = Geometry::PolarVector.new(polar_angle: direction, magnitude: DEFAULT_STEP_DISTANCE)
+    polar_translation_vector.translate_position(position)
   end
 
   private
-
-  def degrees_to_radians(degrees)
-    degrees * Math::PI / 180
-  end
 
   def set_direction(direction)
     self.direction = direction % 360
