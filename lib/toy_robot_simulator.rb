@@ -1,5 +1,4 @@
 require 'robot'
-require 'position'
 require 'robot_commands'
 
 class ToyRobotSimulator

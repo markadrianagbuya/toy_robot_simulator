@@ -1,3 +1,5 @@
+require 'position'
+
 module RobotCommands
   class Place
     def self.can_handle?(user_command)
