@@ -4,7 +4,7 @@ module RobotCommands
       user_command == "REPORT"
     end
 
-    def apply(_user_command, robot, simulator)
+    def apply(_user_command, robot)
       return unless robot.placed?
       output = [robot.x_position, robot.y_position, robot.orientation]
       puts "Output: #{output.join(",")}"

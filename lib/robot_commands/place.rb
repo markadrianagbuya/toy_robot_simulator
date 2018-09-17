@@ -6,7 +6,7 @@ module RobotCommands
       /PLACE \d,\d,(EAST|NORTH|WEST|SOUTH)/.match?(user_command)
     end
 
-    def apply(user_command, robot, _simulator)
+    def apply(user_command, robot)
       _place_command, position_orientation = user_command.split(" ")
       x, y, orientation = position_orientation.split(",")
 

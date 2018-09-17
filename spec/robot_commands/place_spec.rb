@@ -33,7 +33,7 @@ RSpec.describe RobotCommands::Place do
     it "places the robot" do
       robot = Robot.new
       user_command = "PLACE 1,3,SOUTH"
-      RobotCommands::Place.new.apply(user_command, robot, double)
+      RobotCommands::Place.new.apply(user_command, robot)
       expect(robot.placed?).to eq true
       expect(robot.x_position).to eq 1
       expect(robot.y_position).to eq 3
