@@ -1,15 +1,15 @@
 module Commands
   class Place
-    def self.can_handle?(input)
-      place_format.match?(input)
+    def self.valid_params?(params)
+      params_regex.match?(params)
     end
 
-    def self.place_format
-      /PLACE (\d),(\d),(NORTH|EAST|SOUTH|WEST)/
+    def self.params_regex
+      /(\d),(\d),(NORTH|EAST|SOUTH|WEST)/
     end
 
-    def self.from_input(input)
-      x, y, direction = place_format.match(input).captures
+    def self.from_params(params)
+      x, y, direction = params_regex.match(params).captures
 
       new(x.to_i, y.to_i, direction)
     end

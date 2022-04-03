@@ -1,3 +1,5 @@
+require 'coordinate'
+
 ##
 # This class contains the state of a "simulation". It is aware of the board and the robot.
 # It acts as an "AggregateRoot" object (DDD) and provides a single entry point for applications to modify the domain.
@@ -13,6 +15,8 @@ class Simulation
   end
 
   def report
+    return unless robot.placed?
+
     "#{robot.x}, #{robot.y}, #{robot.direction}"
   end
 

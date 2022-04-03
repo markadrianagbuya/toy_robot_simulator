@@ -1,4 +1,4 @@
-require 'toy_robot_simulator'
+require 'application'
 
 # ToyRobotSimulator.new.start
-ToyRobotSimulator.new.run
+Application.new.run

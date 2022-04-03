@@ -1,3 +1,6 @@
+require 'translation'
+require 'cardinal_direction'
+
 ##
 # This robot class is aware of where it is, where it is facing, how it moves and how it turns
 #
