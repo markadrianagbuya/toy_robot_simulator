@@ -1,11 +1,11 @@
-require 'coordinate'
+require 'position'
+require 'direction'
 
 ##
 # This class contains the state of a "simulation". It is aware of the board and the robot.
 # It acts as an "AggregateRoot" object (DDD) and provides a single entry point for applications to modify the domain.
 # It does not contain any logic about the application and is designed in such a way that it can be used in many types of applications
 #
-
 class Simulation
   attr_reader :robot, :board
 
@@ -20,8 +20,9 @@ class Simulation
     "#{robot.x_position}, #{robot.y_position}, #{robot.direction}"
   end
 
-  def place(x_position, y_position, direction)
-    position = Coordinate.new(x_position, y_position)
+  def place(x_position, y_position, direction_name)
+    position = Position.new(x_position, y_position)
+    direction = Direction.from_name(direction_name)
 
     return unless board.position_on_board?(position)
 

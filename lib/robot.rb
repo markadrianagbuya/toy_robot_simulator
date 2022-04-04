@@ -1,21 +1,14 @@
-require 'translation'
-require 'cardinal_direction'
+require 'direction'
+require 'movement'
 
 ##
 # This robot class is aware of where it is, where it is facing, how it moves and how it turns
 #
 # It has "angle" as a base attribute for a more generic approach to movement and can possibly be extended to face in all angles and not just cardinal directions.
-
 class Robot
   RIGHT_ANGLE_IN_DEGREES = 90
-  DIRECTION_TO_TRANSLATION = {
-    NORTH: Translation.new(0, 1),
-    EAST: Translation.new(1, 0),
-    SOUTH: Translation.new(0, -1),
-    WEST: Translation.new(-1, 0)
-  }.freeze
 
-  attr_reader :angle, :position
+  attr_reader :direction, :position
 
   def x_position
     position.x
@@ -35,33 +28,21 @@ class Robot
   end
 
   def turn_left
-    self.angle = angle - RIGHT_ANGLE_IN_DEGREES
+    rotate(-RIGHT_ANGLE_IN_DEGREES)
   end
 
   def turn_right
-    self.angle = angle + RIGHT_ANGLE_IN_DEGREES
-  end
-
-  def direction=(direction_name)
-    self.angle = CardinalDirection.from_name(direction_name)
-  end
-
-  def direction
-    CardinalDirection.name(angle)
+    rotate(RIGHT_ANGLE_IN_DEGREES)
   end
 
   def position_ahead
-    movement.next_position(position, direction)
-    position.translate(translation)
+    Movement.advance(position, direction)
   end
 
   private
 
-  def translation
-    DIRECTION_TO_TRANSLATION[direction]
-  end
-
-  def angle=(angle)
-    @angle = angle % 360
+  def rotate(angle)
+    new_angle = direction.angle + angle
+    self.direction = Direction.from_angle(new_angle)
   end
 end
