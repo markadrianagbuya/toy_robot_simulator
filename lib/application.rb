@@ -9,6 +9,7 @@ require 'board'
 
 class Application
   attr_reader :io, :command_controller
+
   DEFAULT_BOARD_SIZE = 5
 
   def initialize
