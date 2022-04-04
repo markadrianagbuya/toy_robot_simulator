@@ -17,7 +17,7 @@ class Simulation
   def report
     return unless robot.placed?
 
-    "#{robot.x_position}, #{robot.y_position}, #{robot.direction}"
+    "Output: #{robot.x_position}, #{robot.y_position}, #{robot.direction_name}"
   end
 
   def place(x_position, y_position, direction_name)

@@ -12,17 +12,17 @@ module Commands
     end
 
     def self.from_params(params)
-      x_position, y_position, direction = params_regex.match(params).captures
+      x_position, y_position, direction_name = params_regex.match(params).captures
 
-      new(x_position.to_i, y_position.to_i, direction)
+      new(x_position.to_i, y_position.to_i, direction_name)
     end
 
-    attr_reader :x_position, :y_position, :direction
+    attr_reader :x_position, :y_position, :direction_name
 
-    def initialize(x_position, y_position, direction)
+    def initialize(x_position, y_position, direction_name)
       @x_position = x_position
       @y_position = y_position
-      @direction = direction
+      @direction_name = direction_name
     end
   end
 end

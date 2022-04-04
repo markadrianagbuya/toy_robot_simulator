@@ -1,7 +1,6 @@
 ##
 # This Direction class can map to and from direction names and angles
-
-class Direction
+class Direction < Struct.new(:name, angle)
   DIRECTION_TO_ANGLE = {
     NORTH: 0,
     EAST: 90,
@@ -20,5 +19,3 @@ class Direction
     Direction.new(direction_name, angle)
   end
 end
-
-Direction = Struct.new(:name, angle)

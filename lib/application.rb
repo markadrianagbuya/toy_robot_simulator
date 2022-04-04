@@ -9,10 +9,11 @@ require 'board'
 
 class Application
   attr_reader :io, :command_controller
+  DEFAULT_BOARD_SIZE = 5
 
   def initialize
     @io = ConsoleIO.new
-    simulation = Simulation.new(Robot.new, Board.new(5))
+    simulation = Simulation.new(Robot.new, Board.new(DEFAULT_BOARD_SIZE))
     @command_controller = CommandController.new(simulation, io)
   end
 

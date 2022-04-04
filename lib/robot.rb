@@ -36,13 +36,17 @@ class Robot
   end
 
   def position_ahead
-    Movement.advance(position, direction)
+    Movement.advance(position, direction.name)
+  end
+
+  def direction_name
+    direction.name
   end
 
   private
 
   def rotate(angle)
     new_angle = direction.angle + angle
-    self.direction = Direction.from_angle(new_angle)
+    @direction = Direction.from_angle(new_angle)
   end
 end

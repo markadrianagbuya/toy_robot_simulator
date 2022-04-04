@@ -41,7 +41,7 @@ class CommandController
 
     command = Commands::Place.from_params(request_params)
 
-    simulation.place(command.x, command.y, command.direction)
+    simulation.place(command.x_position, command.y_position, command.direction_name)
   end
 
   def move

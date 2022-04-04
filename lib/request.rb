@@ -1,6 +1,5 @@
 ##
 # This Request class captures the expected format of the request to be a command followed by params
-
 class Request
   def self.input_regex
     /([A-Z]*)\s?([^\s]*)/

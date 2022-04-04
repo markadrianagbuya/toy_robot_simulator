@@ -10,8 +10,8 @@ class Movement
     WEST: Translation.new(-1, 0)
   }.freeze
 
-  def self.advance(position, direction)
-    translation = DIRECTION_TO_TRANSLATION[direction.name]
+  def self.advance(position, direction_name)
+    translation = DIRECTION_TO_TRANSLATION[direction_name]
     position.translate(translation)
   end
 end
