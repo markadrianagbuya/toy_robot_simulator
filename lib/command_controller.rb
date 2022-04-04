@@ -4,12 +4,10 @@ require 'commands/place'
 ##
 # This CommandCoordinator class is reponsible for executing the commands.
 # It is the layer in between the application and the domain that calls the domain methods on the aggregate root
-
 class CommandController
-  attr_accessor :application_run, :simulation, :io
+  attr_reader :simulation, :io
 
-  def initialize(application_run, simulation, io)
-    @application_run = application_run
+  def initialize(simulation, io)
     @simulation = simulation
     @io = io
   end
@@ -33,15 +31,15 @@ class CommandController
       "MOVE" => ->(_request) { move },
       "LEFT" => ->(_request) { left },
       "RIGHT" => ->(_request) { right },
-      "REPORT" => ->(_request) { report },
-      "EXIT" => ->(_request) { exit }
+      "REPORT" => ->(_request) { report }
     }
   end
 
   def place(request)
-    return unless Commands::Place.valid_params?(request.params)
+    request_params = request.params
+    return unless Commands::Place.valid_params?(request_params)
 
-    command = Commands::Place.from_params(request.params)
+    command = Commands::Place.from_params(request_params)
 
     simulation.place(command.x, command.y, command.direction)
   end
@@ -60,9 +58,5 @@ class CommandController
 
   def report
     io.output(simulation.report)
-  end
-
-  def exit
-    application_run.stop
   end
 end

@@ -17,16 +17,15 @@ class Simulation
   def report
     return unless robot.placed?
 
-    "#{robot.x}, #{robot.y}, #{robot.direction}"
+    "#{robot.x_position}, #{robot.y_position}, #{robot.direction}"
   end
 
-  def place(x, y, direction)
-    position = Coordinate.new(x, y)
+  def place(x_position, y_position, direction)
+    position = Coordinate.new(x_position, y_position)
 
     return unless board.position_on_board?(position)
 
-    robot.position = position
-    robot.direction = direction
+    robot.place(position, direction)
   end
 
   def move
@@ -36,7 +35,7 @@ class Simulation
 
     return unless board.position_on_board?(next_position)
 
-    robot.position = next_position
+    robot.place(next_position, robot.direction)
   end
 
   def turn_left

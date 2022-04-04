@@ -15,15 +15,19 @@ class Robot
     WEST: Translation.new(-1, 0)
   }.freeze
 
-  attr_reader :angle
-  attr_accessor :position
+  attr_reader :angle, :position
 
-  def x
+  def x_position
     position.x
   end
 
-  def y
+  def y_position
     position.y
+  end
+
+  def place(position, direction)
+    @position = position
+    @direction = direction
   end
 
   def placed?
@@ -47,6 +51,7 @@ class Robot
   end
 
   def position_ahead
+    movement.next_position(position, direction)
     position.translate(translation)
   end
 

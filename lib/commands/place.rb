@@ -1,3 +1,6 @@
+##
+# This Place class captures the intent of the user to place and provides the params in a convenient and purposeful manner
+
 module Commands
   class Place
     def self.valid_params?(params)
@@ -9,16 +12,16 @@ module Commands
     end
 
     def self.from_params(params)
-      x, y, direction = params_regex.match(params).captures
+      x_position, y_position, direction = params_regex.match(params).captures
 
-      new(x.to_i, y.to_i, direction)
+      new(x_position.to_i, y_position.to_i, direction)
     end
 
-    attr_accessor :x, :y, :direction
+    attr_reader :x_position, :y_position, :direction
 
-    def initialize(x, y, direction)
-      @x = x
-      @y = y
+    def initialize(x_position, y_position, direction)
+      @x_position = x_position
+      @y_position = y_position
       @direction = direction
     end
   end
