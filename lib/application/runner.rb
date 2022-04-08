@@ -7,19 +7,19 @@ require 'board'
 ##
 # This application class is responsible for initializing the app and contains the main run loop logic
 
-class Application
+class Runner
   attr_reader :io, :command_controller
 
   DEFAULT_BOARD_SIZE = 5
 
   def initialize
-    @io = ConsoleIO.new
+    @io = ConsoleIO.new(input: $stdin, output: $stdout)
     simulation = Simulation.new(Robot.new, Board.new(DEFAULT_BOARD_SIZE))
     @command_controller = CommandController.new(simulation, io)
   end
 
   def run
-    io.output("Welcome to the robot simulator!")
+    io.print("Welcome to the robot simulator!")
 
     loop do
       print("Enter a command:")

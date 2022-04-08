@@ -3,8 +3,6 @@
 
 module ToyRobotSimulation
   class Board
-    attr_reader :size
-
     def initialize(size)
       @size = size
     end
@@ -12,6 +10,10 @@ module ToyRobotSimulation
     def position_on_board?(position)
       [position.x, position.y].all? { |index| index.between?(min_position_index, max_position_index) }
     end
+
+    private
+
+    attr_reader :size
 
     def min_position_index
       0

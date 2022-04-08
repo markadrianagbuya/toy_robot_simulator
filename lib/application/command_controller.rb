@@ -57,6 +57,6 @@ class CommandController
   end
 
   def report
-    io.output(simulation.report)
+    io.print(simulation.report)
   end
 end
