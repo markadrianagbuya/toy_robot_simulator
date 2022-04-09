@@ -2,7 +2,6 @@
 # This Request class captures the expected format of the request to be a command followed by params
 module Application
   class Request
-    # TODO: figure out where to put the parser error
     ParserError = Class.new(StandardError)
 
     INPUT_REGEX = /^([A-Z]+)(\s([^\s]*))?$/
