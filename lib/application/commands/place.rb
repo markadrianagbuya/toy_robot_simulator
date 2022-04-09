@@ -16,7 +16,7 @@ module Application
         raise InvalidParams.new("Cannot parse params: '#{params}'") unless valid_params?(params)
         x_position, y_position, direction_name = PARAMS_REGEX.match(params).captures
 
-        new(x_position.to_i, y_position.to_i, direction_name)
+        new(Integer(x_position), Integer(y_position), direction_name)
       end
 
       attr_reader :x_position, :y_position, :direction_name
