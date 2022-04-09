@@ -3,7 +3,7 @@ source "https://rubygems.org"
 group :test do
   gem "rspec"
 
-  source "https://oss:PbR9HMnbPAvYpG3QBcTrnl71la3vX7m6@gem.mutant.dev" do
+  source "https://gem.mutant.dev" do
     gem "mutant-license"
   end
 

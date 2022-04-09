@@ -1,5 +1,5 @@
 GEM
-  remote: https://oss:PbR9HMnbPAvYpG3QBcTrnl71la3vX7m6@gem.mutant.dev/
+  remote: https://gem.mutant.dev/
   specs:
     mutant-license (0.1.1.2.3962932010138086086530912898901602698316.0)
 
