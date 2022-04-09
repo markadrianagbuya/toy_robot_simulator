@@ -32,7 +32,7 @@ module Application
       end
 
       it "returns the stripped strings from multiple commands" do
-        input = StringIO.new("COMMAND  \n OTHERCOMMAND")
+        input = StringIO.new("COMMAND  \n OTHERCOMMAND\n")
         console_io = described_class.new(input: input, output: double)
 
         expect(console_io.read_input).to eq "COMMAND"

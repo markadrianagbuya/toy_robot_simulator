@@ -19,7 +19,7 @@ module ToyRobotSimulation
     def report
       return unless robot.placed?
 
-      "Output: #{robot.x_position}, #{robot.y_position}, #{robot.direction_name}"
+      "Output: #{robot.x_position},#{robot.y_position},#{robot.direction_name}"
     end
 
     def place(x_position, y_position, direction_name)

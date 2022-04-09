@@ -13,21 +13,21 @@ module ToyRobotSimulation
       it "returns a report of the robot's position" do
         simulation = described_class.new(Robot.new, Board.new(5))
         simulation.place(1, 2, "NORTH")
-        expect(simulation.report).to eq "Output: 1, 2, NORTH"
+        expect(simulation.report).to eq "Output: 1,2,NORTH"
       end
 
       it "returns a report of the robot's position after moving" do
         simulation = described_class.new(Robot.new, Board.new(5))
         simulation.place(1, 2, "NORTH")
         simulation.move
-        expect(simulation.report).to eq "Output: 1, 3, NORTH"
+        expect(simulation.report).to eq "Output: 1,3,NORTH"
       end
 
       it "returns a report of the robot's position after turning" do
         simulation = described_class.new(Robot.new, Board.new(5))
         simulation.place(1, 2, "NORTH")
         simulation.turn_right
-        expect(simulation.report).to eq "Output: 1, 2, EAST"
+        expect(simulation.report).to eq "Output: 1,2,EAST"
       end
     end
 
@@ -36,17 +36,17 @@ module ToyRobotSimulation
         simulation = described_class.new(Robot.new, Board.new(5))
         simulation.place(4, 4, "NORTH")
 
-        expect(simulation.report).to eq "Output: 4, 4, NORTH"
+        expect(simulation.report).to eq "Output: 4,4,NORTH"
       end
 
       it "places the robot multiple times" do
         simulation = described_class.new(Robot.new, Board.new(5))
 
         simulation.place(4, 4, "NORTH")
-        expect(simulation.report).to eq "Output: 4, 4, NORTH"
+        expect(simulation.report).to eq "Output: 4,4,NORTH"
 
         simulation.place(3, 1, "WEST")
-        expect(simulation.report).to eq "Output: 3, 1, WEST"
+        expect(simulation.report).to eq "Output: 3,1,WEST"
       end
 
       it "does not place the robot when the position is off the board" do
@@ -61,7 +61,7 @@ module ToyRobotSimulation
         simulation.place(3, 4, "SOUTH")
         simulation.place(5, 5, "NORTH")
 
-        expect(simulation.report).to eq "Output: 3, 4, SOUTH"
+        expect(simulation.report).to eq "Output: 3,4,SOUTH"
       end
     end
 
@@ -77,7 +77,7 @@ module ToyRobotSimulation
         simulation.place(1, 1, "NORTH")
         simulation.move
 
-        expect(simulation.report).to eq "Output: 1, 2, NORTH"
+        expect(simulation.report).to eq "Output: 1,2,NORTH"
       end
 
       it "does not move the robot if the position ahead is off the board" do
@@ -85,7 +85,7 @@ module ToyRobotSimulation
         simulation.place(4, 4, "NORTH")
         simulation.move
 
-        expect(simulation.report).to eq "Output: 4, 4, NORTH"
+        expect(simulation.report).to eq "Output: 4,4,NORTH"
       end
     end
 
@@ -101,7 +101,7 @@ module ToyRobotSimulation
         simulation.place(4, 4, "NORTH")
         simulation.turn_left
 
-        expect(simulation.report).to eq "Output: 4, 4, WEST"
+        expect(simulation.report).to eq "Output: 4,4,WEST"
       end
 
       it "turns the robot multiple times" do
@@ -110,7 +110,7 @@ module ToyRobotSimulation
         simulation.turn_left
         simulation.turn_left
 
-        expect(simulation.report).to eq "Output: 4, 4, SOUTH"
+        expect(simulation.report).to eq "Output: 4,4,SOUTH"
       end
     end
 
@@ -126,7 +126,7 @@ module ToyRobotSimulation
         simulation.place(4, 4, "EAST")
         simulation.turn_right
 
-        expect(simulation.report).to eq "Output: 4, 4, SOUTH"
+        expect(simulation.report).to eq "Output: 4,4,SOUTH"
       end
 
       it "turns the robot multiple times" do
@@ -135,7 +135,7 @@ module ToyRobotSimulation
         simulation.turn_right
         simulation.turn_right
 
-        expect(simulation.report).to eq "Output: 4, 4, WEST"
+        expect(simulation.report).to eq "Output: 4,4,WEST"
       end
     end
   end
