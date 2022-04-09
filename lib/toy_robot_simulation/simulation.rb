@@ -1,5 +1,5 @@
-require 'toy_robot_simulation/position'
-require 'toy_robot_simulation/direction'
+require "toy_robot_simulation/position"
+require "toy_robot_simulation/direction"
 
 ##
 # This class contains the state of a "simulation". It is aware of the board and the robot.

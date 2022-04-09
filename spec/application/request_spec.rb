@@ -1,4 +1,4 @@
-require 'application/request'
+require "application/request"
 
 module Application
   RSpec.describe Request do
@@ -66,7 +66,7 @@ module Application
       end
 
       it "raises an error if the input is invalid" do
-        expect { described_class.from_input("COMMAND 1,2,ABC 3,4")}.to raise_error(Request::ParserError)
+        expect { described_class.from_input("COMMAND 1,2,ABC 3,4") }.to raise_error(Request::ParserError)
       end
     end
 

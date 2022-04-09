@@ -1,4 +1,4 @@
-require 'application/commands/place'
+require "application/commands/place"
 
 module Application
   module Commands
@@ -61,7 +61,7 @@ module Application
         end
 
         it "raises an error if the params are invalid" do
-          expect { described_class.from_params("A,B,12")}.to raise_error(Place::InvalidParams, "Cannot parse params: 'A,B,12'")
+          expect { described_class.from_params("A,B,12") }.to raise_error(Place::InvalidParams, "Cannot parse params: 'A,B,12'")
         end
       end
 

@@ -1,4 +1,4 @@
-require 'toy_robot_simulation/position'
+require "toy_robot_simulation/position"
 
 module ToyRobotSimulation
   RSpec.describe Position do
@@ -41,8 +41,8 @@ module ToyRobotSimulation
 
         new_position = position.translate(-1, -2)
 
-        expect(new_position.x).to eq -1
-        expect(new_position.y).to eq -2
+        expect(new_position.x).to eq(-1)
+        expect(new_position.y).to eq(-2)
       end
 
       it "translates with both positive and negative values" do
@@ -51,7 +51,7 @@ module ToyRobotSimulation
         new_position = position.translate(3, -2)
 
         expect(new_position.x).to eq 3
-        expect(new_position.y).to eq -2
+        expect(new_position.y).to eq(-2)
       end
 
       it "translates from non origin positions" do
@@ -60,7 +60,7 @@ module ToyRobotSimulation
         new_position = position.translate(3, -2)
 
         expect(new_position.x).to eq 5
-        expect(new_position.y).to eq -1
+        expect(new_position.y).to eq(-1)
       end
     end
   end

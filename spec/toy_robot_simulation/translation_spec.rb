@@ -1,4 +1,4 @@
-require 'toy_robot_simulation/translation'
+require "toy_robot_simulation/translation"
 
 module ToyRobotSimulation
   RSpec.describe Translation do

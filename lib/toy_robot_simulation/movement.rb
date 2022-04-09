@@ -1,4 +1,4 @@
-require 'toy_robot_simulation/translation'
+require "toy_robot_simulation/translation"
 
 ##
 # This Movement class encapsulates the movement logic

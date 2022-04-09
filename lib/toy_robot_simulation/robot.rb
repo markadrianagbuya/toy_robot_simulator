@@ -1,5 +1,5 @@
-require 'toy_robot_simulation/direction'
-require 'toy_robot_simulation/movement'
+require "toy_robot_simulation/direction"
+require "toy_robot_simulation/movement"
 
 ##
 # This robot class is aware of where it is, where it is facing, how it moves and how it turns

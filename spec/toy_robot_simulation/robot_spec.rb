@@ -1,6 +1,6 @@
-require 'toy_robot_simulation/robot'
-require 'toy_robot_simulation/position'
-require 'toy_robot_simulation/direction'
+require "toy_robot_simulation/robot"
+require "toy_robot_simulation/position"
+require "toy_robot_simulation/direction"
 
 module ToyRobotSimulation
   RSpec.describe Robot do

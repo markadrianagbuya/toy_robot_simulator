@@ -1,13 +1,24 @@
 ##
 # This Direction class can map to and from direction names and angles
 module ToyRobotSimulation
-  Direction = Struct.new(:name, :angle) do
+  class Direction
     DIRECTION_TO_ANGLE = {
       NORTH: 0,
       EAST: 90,
       SOUTH: 180,
       WEST: 270
     }.freeze
+
+    attr_reader :name, :angle
+
+    def initialize(name, angle)
+      @name = name
+      @angle = angle
+    end
+
+    def ==(other_direction)
+      name == other_direction.name && angle == other_direction.angle
+    end
 
     def self.from_angle(angle)
       normalised_angle = angle % 360

@@ -1,5 +1,5 @@
-require 'toy_robot_simulation/board'
-require 'toy_robot_simulation/position'
+require "toy_robot_simulation/board"
+require "toy_robot_simulation/position"
 
 module ToyRobotSimulation
   RSpec.describe Board do

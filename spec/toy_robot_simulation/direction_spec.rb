@@ -1,8 +1,8 @@
-require 'toy_robot_simulation/direction'
+require "toy_robot_simulation/direction"
 
 module ToyRobotSimulation
   RSpec.describe Direction do
-    describe '.from_name' do
+    describe ".from_name" do
       it "returns the correct name and angle for WEST" do
         direction = described_class.from_name("WEST")
         expect(direction).to have_attributes(name: "WEST", angle: 270)
@@ -24,7 +24,7 @@ module ToyRobotSimulation
       end
     end
 
-    describe '.from_angle' do
+    describe ".from_angle" do
       it "returns west for angle -90" do
         direction = described_class.from_angle(-90)
 

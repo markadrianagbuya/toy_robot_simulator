@@ -1,8 +1,8 @@
-require 'application/console_io'
-require 'application/command_controller'
-require 'toy_robot_simulation/simulation'
-require 'toy_robot_simulation/robot'
-require 'toy_robot_simulation/board'
+require "application/console_io"
+require "application/command_controller"
+require "toy_robot_simulation/simulation"
+require "toy_robot_simulation/robot"
+require "toy_robot_simulation/board"
 
 ##
 # This application class is responsible for initializing the app and contains the main run loop logic

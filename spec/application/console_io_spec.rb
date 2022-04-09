@@ -1,5 +1,5 @@
-require 'application/console_io'
-require 'stringio'
+require "application/console_io"
+require "stringio"
 
 module Application
   RSpec.describe ConsoleIO do

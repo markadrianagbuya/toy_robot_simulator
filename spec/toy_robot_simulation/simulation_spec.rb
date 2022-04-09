@@ -1,6 +1,6 @@
-require 'toy_robot_simulation/simulation'
-require 'toy_robot_simulation/robot'
-require 'toy_robot_simulation/board'
+require "toy_robot_simulation/simulation"
+require "toy_robot_simulation/robot"
+require "toy_robot_simulation/board"
 
 module ToyRobotSimulation
   RSpec.describe Simulation do
