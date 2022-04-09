@@ -18,5 +18,3 @@ matcher:
   subjects:
     - Application*
     - ToyRobotSimulator*
-  ignore:
-    - Application::Runner*

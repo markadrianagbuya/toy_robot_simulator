@@ -49,6 +49,20 @@ module Application
 
         expect(io).to have_received(:print).with(/Welcome/)
       end
+
+      it "prints a command prompt" do
+        io = instance_double(ConsoleIO).as_null_object
+        allow(io).to receive(:read_input).and_return("PLACE 1,2,NORTH", "INVALID", "REPORT")
+
+        command_controller = instance_double(CommandController).as_null_object
+
+        runner = described_class.new(io, command_controller)
+        stop_loop_after_n_iterations(runner, 1)
+
+        runner.run
+
+        expect(io).to have_received(:print).with("Enter a command: ")
+      end
     end
   end
 end
