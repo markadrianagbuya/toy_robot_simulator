@@ -267,13 +267,6 @@ module ToyRobotSimulation
 
         expect(position_ahead).to eq Position.new(3, 101)
       end
-
-      xit "does TODO when not placed" do
-        robot = described_class.new
-        position_ahead = robot.position_ahead
-
-        expect(position_ahead).to eq # TODO
-      end
     end
   end
 end

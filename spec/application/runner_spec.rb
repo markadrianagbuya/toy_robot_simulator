@@ -1,8 +1,11 @@
 require "application/runner"
 require "application/console_io"
+require "helpers/loop_helper"
 
 module Application
   RSpec.describe Runner do
+    include LoopHelper
+
     describe "#run" do
       it "loops, reading and executing commands" do
         io = instance_double(ConsoleIO).as_null_object
@@ -45,10 +48,6 @@ module Application
         runner.run
 
         expect(io).to have_received(:print).with(/Welcome/)
-      end
-
-      def stop_loop_after_n_iterations(instance, iterations)
-        allow(instance).to receive(:loop).tap { |obj| iterations.times { obj.and_yield } }
       end
     end
   end

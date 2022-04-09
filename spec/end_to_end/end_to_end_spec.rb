@@ -1,7 +1,11 @@
 require "application/runner"
-require 'stringio'
+require "helpers/loop_helper"
+require "helpers/stdin_helper"
 
 RSpec.describe "End to end behaviour" do
+  include LoopHelper
+  include StdinHelper
+
   it "works with provided example (a)" do
     inputs = <<~INPUT
       PLACE 0,0,NORTH
@@ -89,18 +93,5 @@ RSpec.describe "End to end behaviour" do
 
       runner.run
     end
-  end
-
-  def with_stubbed_stdin(inputs)
-    $stdin = StringIO.new(inputs)
-
-    yield
-
-    $stdin = STDIN
-  end
-
-  # TODO: move to common helpers
-  def stop_loop_after_n_iterations(instance, iterations)
-    allow(instance).to receive(:loop).tap { |obj| iterations.times { obj.and_yield } }
   end
 end
