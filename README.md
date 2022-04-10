@@ -8,15 +8,10 @@ This solution takes into consideration a few [assumptions](#assumptions). It was
 2. Ensure `bundler` installed
 3. Run `bundle install`
 
-## Usage
+## Starting the Application
 Run Simulation:
 ```
-ruby -I lib/ start_toy_robot_simulation.rb
-```
-
-Run Specs:
-```
-rspec spec
+./bin/start
 ```
 
 ## Assumptions
@@ -25,6 +20,14 @@ rspec spec
 * Commands are case sensitive
 * Output is via STDOUT
 * The program terminates after an "EXIT" command
+
+
+## Decisions and considerations made - For reviewer
+
+# Objects
+# Architecture
+
+# CI
 
 ## Future Improvements
 * Docker Image for seamless set up
