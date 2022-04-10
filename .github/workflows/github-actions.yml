@@ -46,10 +46,6 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        ruby-version: ['2.6', '2.7', '3.0']
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Ruby
@@ -58,17 +54,13 @@ jobs:
     # uses: ruby/setup-ruby@v1
       uses: ruby/setup-ruby@473e4d8fe5dd94ee328fdfca9f8c9c7afc9dae5e
       with:
-        ruby-version: ${{ matrix.ruby-version }}
+        ruby-version: '3.0'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run StandardRB Lint
       run: bundle exec standardrb
 
   code_quality:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        ruby-version: ['2.6', '2.7', '3.0']
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Ruby
@@ -77,7 +69,7 @@ jobs:
     # uses: ruby/setup-ruby@v1
       uses: ruby/setup-ruby@473e4d8fe5dd94ee328fdfca9f8c9c7afc9dae5e
       with:
-        ruby-version: ${{ matrix.ruby-version }}
+        ruby-version: '3.0'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run StandardRB Lint
       run: bundle exec rubycritic lib -s 95 -f lint
