@@ -1,10 +1,7 @@
 module Application
-
   ##
   # This application class is responsible for initializing the app and contains the main run loop logic
   class Runner
-
-
     def initialize(io, command_controller)
       @io = io
       @command_controller = command_controller
