@@ -12,6 +12,8 @@ jobs:
       matrix:
         ruby-version: ['2.6', '2.7', '3.0']
 
+    env:
+      BUNDLE_GEM__MUTANT__DEV: ${{ secrets.MUTANT_KEY }}'
     steps:
     - uses: actions/checkout@v3
     - name: Set up Ruby
@@ -31,6 +33,8 @@ jobs:
       matrix:
         ruby-version: ['2.6', '2.7', '3.0']
 
+    env:
+      BUNDLE_GEM__MUTANT__DEV: ${{ secrets.MUTANT_KEY }}'
     steps:
     - uses: actions/checkout@v3
     - name: Set up Ruby
@@ -46,6 +50,8 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
+    env:
+      BUNDLE_GEM__MUTANT__DEV: ${{ secrets.MUTANT_KEY }}'
     steps:
     - uses: actions/checkout@v3
     - name: Set up Ruby
@@ -61,6 +67,8 @@ jobs:
 
   code_quality:
     runs-on: ubuntu-latest
+    env:
+      BUNDLE_GEM__MUTANT__DEV: ${{ secrets.MUTANT_KEY }}'
     steps:
     - uses: actions/checkout@v3
     - name: Set up Ruby
