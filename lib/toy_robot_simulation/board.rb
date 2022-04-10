@@ -1,7 +1,7 @@
-##
-# This board class represents a square two dimensional board. It knows whether a position will be on the board.
-
 module ToyRobotSimulation
+  ##
+  # This board class represents a square two dimensional board. It knows whether a position will be on the board.
+  #
   class Board
     def initialize(size)
       @size = size

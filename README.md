@@ -6,6 +6,7 @@
   <p align="center">
     Mark Agbuya-Cheok's implementation of the "Toy Robot Simulator" in Ruby
   </p>
+  </br>
 </div>
 
 ## Approach
@@ -18,7 +19,11 @@ This solution takes into consideration a few assumptions:
 * Input is via STDIN
 * Output is via STDOUT
 * Invalid commands are ignored
+* Extra whitespace in user inputs are ignored
 * Commands are case sensitive
+* Commands are in the format: "UPCASEDCOMMAND (PARAM1,PARAM2,PARAM3)"
+
+</br>
 
 ## Setup
 
@@ -27,12 +32,15 @@ Install dependencies:
 bundle install
 ```
 
+</br>
+
 ## Starting the Application
 
 Run Simulation:
 ```sh
 ./bin/start
 ```
+</br>
 
 ## Testing and Checks
 
@@ -56,6 +64,8 @@ Run RubyCritic code quality checks:
 bundle exec rubycritic lib
 ```
 
+</br>
+
 ## Design
 
 ### Architecture
@@ -70,7 +80,7 @@ The `ToyRobotSimulation` namespace contains the code related to the simulation, 
 
 Code quality is checked via the [RubyCritic gem](https://github.com/whitesmith/rubycritic). RubyCritic scores the code based on the complexity and code smells identified. I've added a check in the CI to ensure the score of the code in the `lib` directory achieves a minimum of 95/100.
 
-![Ruby_Critic_-_Home](https://user-images.githubusercontent.com/4326858/162619445-8f1a2ed5-d144-4ce2-9e1d-e5e8f497c6e0.png)
+![Ruby_Critic_-_Home](https://user-images.githubusercontent.com/4326858/162623462-c2b5966b-af37-4ecc-977f-461bf352ff43.png)
 
 ### Test completeness
 

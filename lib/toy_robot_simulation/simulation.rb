@@ -1,13 +1,12 @@
 require "toy_robot_simulation/position"
 require "toy_robot_simulation/direction"
 
-##
-# This class contains the state of a "simulation". It is aware of the board and the robot.
-# It acts as an "AggregateRoot" object (DDD) and provides a single entry point for applications to modify the domain.
-# It does not contain any logic about the application and is designed in such a way that it can be used in many types of applications
-#
-
 module ToyRobotSimulation
+  ##
+  # This class contains the state of a "simulation". It is aware of the board and the robot.
+  # It acts as an "AggregateRoot" object (DDD) and provides a single entry point for applications to modify the domain.
+  # It does not contain any logic about the application and is designed in such a way that it can be used in many types of applications
+  #
   class Simulation
     attr_reader :robot, :board
 
