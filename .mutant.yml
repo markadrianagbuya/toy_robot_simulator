@@ -1,0 +1,21 @@
+includes:
+  - lib
+requires:
+  - application
+  - application/commands/place
+  - application/command_controller
+  - application/console_io
+  - application/request
+  - application/runner
+  - toy_robot_simulation/board
+  - toy_robot_simulation/direction
+  - toy_robot_simulation/movement
+  - toy_robot_simulation/position
+  - toy_robot_simulation/robot
+  - toy_robot_simulation/simulation
+  - toy_robot_simulation/translation
+integration: rspec
+matcher:
+  subjects:
+    - Application*
+    - ToyRobotSimulator*

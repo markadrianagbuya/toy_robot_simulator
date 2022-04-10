@@ -1,32 +1,61 @@
-# Toy Robot Simulator
-This is an implementation of the Toy Robot Simulator in Ruby based on [this specification](toy_robot_simulator_specification.md).
+[![Actions Status](https://github.com/markadrianagbuya/toy_robot_simulator/workflows/Tests%20and%20Code%20Quality%20Checks/badge.svg)](https://github.com/markadrianagbuya/toy_robot_simulator/actions)
+<div align="center">
+  <h1 align="center">Toy Robot Simulator 🤖</h1>
 
-This solution takes into consideration a few [assumptions](#assumptions). It was built with an approach to demonstrate my coding ability and contains concepts and abstractions that may be "overkill" for such a simple task. Feel free to explore the commits to view how I arrived at this solution.
+  <p align="center">
+    Mark Agbuya-Cheok's implementation of the "Toy Robot Simulator" in Ruby based on [this specification](toy_robot_simulator_specification.md).
+  </p>
+</div>
 
-## Installation
-1. Ensure `ruby v2.5.1` installed
-2. Ensure `bundler` installed
-3. Run `bundle install`
+## Approach
+My approach while writing the solution to maximise maintainability such that code is easy to extend whilst not being difficult to reason about without excess indirection.
 
-## Usage
-Run Simulation:
-```
-ruby -I lib/ start_toy_robot_simulation.rb
-```
+### Assumptions
+This solution takes into consideration a few assumptions.
 
-Run Specs:
-```
-rspec spec
-```
-
-## Assumptions
 * Input is via STDIN
 * Invalid commands are ignored
 * Commands are case sensitive
 * Output is via STDOUT
-* The program terminates after an "EXIT" command
 
-## Future Improvements
-* Docker Image for seamless set up
-* Makefile for easy running
-* More accurate representation of geometry domain concepts and formulas
+## Setup
+
+Install dependencies:
+```sh
+bundle install
+```
+
+## Starting the Application
+
+Run Simulation:
+```sh
+./bin/start
+```
+
+## Running the Tests
+
+Run tests:
+```sh
+bundle exec rspec spec
+```
+
+## Design
+
+### Classes
+### Architecture
+
+### Code Quality
+Code quality is checked via the [RubyCritic gem](https://github.com/whitesmith/rubycritic). RubyCritic scores the code based on the complexity and code smells identified. I've added a check in the CI to ensure the score of the code in the `lib` directory achieves a minimum of 95/100.
+
+![Ruby_Critic_-_Home](https://user-images.githubusercontent.com/4326858/162619445-8f1a2ed5-d144-4ce2-9e1d-e5e8f497c6e0.png)
+
+### Test completeness
+I utilise mutation testing via the [Mutant gem](https://github.com/mbj/mutant) to ensure test completeness. This test suite has **100% mutation coverage**.
+
+### What is mutation testing?
+Mutation testing works by changing the code slightly in a variety of ways to cause it to break, creating a "mutant" for each variety, and running the tests against the "mutant". If the tests continue to pass, then it indicates that the tests are not complete.
+
+This method is a more precise way of checking test completeness than code coverage as relying on code coverage could lead to false positives.
+
+### Linting
+I utilise standardrb to maintain a base style

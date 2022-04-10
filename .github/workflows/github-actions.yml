@@ -1,0 +1,81 @@
+name: Tests and Code Quality Checks
+
+on: [push]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['2.6', '2.7', '3.0']
+
+    env:
+      BUNDLE_GEM__MUTANT__DEV: ${{ secrets.MUTANT_KEY }}
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+    # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
+    # change this to (see https://github.com/ruby/setup-ruby#versioning):
+    # uses: ruby/setup-ruby@v1
+      uses: ruby/setup-ruby@473e4d8fe5dd94ee328fdfca9f8c9c7afc9dae5e
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Run tests
+      run: bundle exec rspec
+
+  mutant:
+    runs-on: ubuntu-latest
+    env:
+      BUNDLE_GEM__MUTANT__DEV: ${{ secrets.MUTANT_KEY }}
+    steps:
+    - uses: actions/checkout@v3
+    - name: debug
+      run: echo $BUNDLE_GEM__MUTANT__DEV | sed 's/./& /g'
+    - name: Set up Ruby
+    # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
+    # change this to (see https://github.com/ruby/setup-ruby#versioning):
+    # uses: ruby/setup-ruby@v1
+      uses: ruby/setup-ruby@473e4d8fe5dd94ee328fdfca9f8c9c7afc9dae5e
+      with:
+        ruby-version: '3.0'
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Run Mutant Check
+      run: bundle exec mutant run
+
+  lint:
+    runs-on: ubuntu-latest
+    env:
+      BUNDLE_GEM__MUTANT__DEV: ${{ secrets.MUTANT_KEY }}
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+    # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
+    # change this to (see https://github.com/ruby/setup-ruby#versioning):
+    # uses: ruby/setup-ruby@v1
+      uses: ruby/setup-ruby@473e4d8fe5dd94ee328fdfca9f8c9c7afc9dae5e
+      with:
+        ruby-version: '3.0'
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Run StandardRB Lint
+      run: bundle exec standardrb
+
+  code_quality:
+    runs-on: ubuntu-latest
+    env:
+      BUNDLE_GEM__MUTANT__DEV: ${{ secrets.MUTANT_KEY }}
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+    # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
+    # change this to (see https://github.com/ruby/setup-ruby#versioning):
+    # uses: ruby/setup-ruby@v1
+      uses: ruby/setup-ruby@473e4d8fe5dd94ee328fdfca9f8c9c7afc9dae5e
+      with:
+        ruby-version: '3.0'
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Run StandardRB Lint
+      run: bundle exec rubycritic lib -s 95 -f lint

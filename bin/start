@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+lib = File.expand_path("../lib", __dir__)
+$LOAD_PATH.unshift(lib)
+
+require "application"
+
+runner = Application.runner_with_default_configuration
+runner.run

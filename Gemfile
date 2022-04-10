@@ -1,4 +1,18 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'pry', groups: %i(test development)
-gem 'rspec', '~> 3.0', group: :test
+ruby "> 2.6"
+
+group :test do
+  gem "rspec"
+
+  source "https://gem.mutant.dev" do
+    gem "mutant-license"
+  end
+
+  gem "mutant-rspec"
+end
+
+group :development do
+  gem "standard"
+  gem "rubycritic", require: false
+end
