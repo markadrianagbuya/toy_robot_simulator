@@ -80,4 +80,4 @@ jobs:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run StandardRB Lint
-      run: bundle exec rubycritic lib
+      run: bundle exec rubycritic lib -s 95 -f lint
