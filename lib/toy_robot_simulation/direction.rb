@@ -16,8 +16,8 @@ module ToyRobotSimulation
       @angle = angle
     end
 
-    def ==(other_direction)
-      name == other_direction.name && angle == other_direction.angle
+    def ==(other)
+      name == other.name && angle == other.angle
     end
 
     def self.from_angle(angle)
