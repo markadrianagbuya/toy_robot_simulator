@@ -47,6 +47,8 @@ bundle exec rspec spec
 ### Code Quality
 Code quality is checked via the [RubyCritic gem](https://github.com/whitesmith/rubycritic). RubyCritic scores the code based on the complexity and code smells identified. I've added a check in the CI to ensure the score of the code in the `lib` directory achieves a minimum of 95/100.
 
+![Ruby_Critic_-_Home](https://user-images.githubusercontent.com/4326858/162619445-8f1a2ed5-d144-4ce2-9e1d-e5e8f497c6e0.png)
+
 ### Test completeness
 I utilise mutation testing via the [Mutant gem](https://github.com/mbj/mutant) to ensure test completeness. This test suite has **100% mutation coverage**.
 
