@@ -1,6 +1,7 @@
 includes:
   - lib
 requires:
+  - application
   - application/commands/place
   - application/command_controller
   - application/console_io
