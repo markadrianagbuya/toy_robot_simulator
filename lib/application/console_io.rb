@@ -13,7 +13,7 @@ module Application
     end
 
     def read_input
-      input.gets.chomp.strip
+      input.gets.strip
     end
 
     private
