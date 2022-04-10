@@ -1,4 +1,4 @@
-require "application/runner"
+require "application"
 require "helpers/loop_helper"
 require "helpers/stdin_helper"
 
@@ -87,7 +87,7 @@ RSpec.describe "End to end behaviour" do
 
   def run(inputs)
     with_stubbed_stdin(inputs) do
-      runner = Application::Runner.with_default_configuration
+      runner = Application.with_default_configuration
 
       stop_loop_after_n_iterations(runner, inputs.split("\n").size)
 
