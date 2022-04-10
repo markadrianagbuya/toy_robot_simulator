@@ -82,7 +82,7 @@ Code quality is checked via the [RubyCritic gem](https://github.com/whitesmith/r
 
 ![Ruby_Critic_-_Home](https://user-images.githubusercontent.com/4326858/162623462-c2b5966b-af37-4ecc-977f-461bf352ff43.png)
 
-### Test completeness
+### Test Completeness
 
 I utilise mutation testing via the [Mutant gem](https://github.com/mbj/mutant) to ensure test completeness. This test suite has **100% mutation coverage**.
 
