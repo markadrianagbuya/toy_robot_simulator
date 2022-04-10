@@ -4,6 +4,7 @@ module Application
     # This Place class captures the intent of the user to place and provides the params in a convenient and purposeful manner
     #
     class Place
+      # Raised when params cannot be parsed
       InvalidParams = Class.new(StandardError)
 
       PARAMS_REGEX = /^(\d+),(\d+),(NORTH|EAST|SOUTH|WEST)$/
