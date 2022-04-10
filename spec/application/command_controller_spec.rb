@@ -27,7 +27,7 @@ module Application
 
           controller.execute("PLACE 1,2,NORTH")
 
-          expect(simulation).to have_received(:place).with(1, 2, "NORTH")
+          expect(simulation).to have_received(:place_robot).with(1, 2, "NORTH")
         end
       end
 
@@ -38,7 +38,7 @@ module Application
 
           controller.execute("MOVE")
 
-          expect(simulation).to have_received(:move)
+          expect(simulation).to have_received(:move_robot)
         end
 
         it "ignores params and calls move on simulation" do
@@ -47,47 +47,47 @@ module Application
 
           controller.execute("MOVE 1,2,3")
 
-          expect(simulation).to have_received(:move)
+          expect(simulation).to have_received(:move_robot)
         end
       end
 
       context "when command is LEFT" do
-        it "calls turn_left on simulation" do
+        it "calls turn_robot_left on simulation" do
           simulation = instance_double(ToyRobotSimulation::Simulation).as_null_object
           controller = described_class.new(simulation, double)
 
           controller.execute("LEFT")
 
-          expect(simulation).to have_received(:turn_left)
+          expect(simulation).to have_received(:turn_robot_left)
         end
 
-        it "ignores params and calls turn_left on simulation" do
+        it "ignores params and calls turn_robot_left on simulation" do
           simulation = instance_double(ToyRobotSimulation::Simulation).as_null_object
           controller = described_class.new(simulation, double)
 
           controller.execute("LEFT 1,2,3")
 
-          expect(simulation).to have_received(:turn_left)
+          expect(simulation).to have_received(:turn_robot_left)
         end
       end
 
       context "when command is RIGHT" do
-        it "calls turn_right on simulation" do
+        it "calls turn_robot_right on simulation" do
           simulation = instance_double(ToyRobotSimulation::Simulation).as_null_object
           controller = described_class.new(simulation, double)
 
           controller.execute("RIGHT")
 
-          expect(simulation).to have_received(:turn_right)
+          expect(simulation).to have_received(:turn_robot_right)
         end
 
-        it "ignores params and calls turn_right on simulation" do
+        it "ignores params and calls turn_robot_right on simulation" do
           simulation = instance_double(ToyRobotSimulation::Simulation).as_null_object
           controller = described_class.new(simulation, double)
 
           controller.execute("RIGHT 1,2,3")
 
-          expect(simulation).to have_received(:turn_right)
+          expect(simulation).to have_received(:turn_robot_right)
         end
       end
 
