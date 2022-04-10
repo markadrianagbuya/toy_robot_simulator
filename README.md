@@ -80,6 +80,7 @@ The `ToyRobotSimulation` namespace contains the code related to the simulation, 
 
 Code quality is checked via the [RubyCritic gem](https://github.com/whitesmith/rubycritic). RubyCritic scores the code based on the complexity and code smells identified. I've added a check in the CI to ensure the score of the code in the `lib` directory achieves a minimum of 95/100.
 
+#### Ruby Critic Report
 ![Ruby_Critic_-_Home](https://user-images.githubusercontent.com/4326858/162623462-c2b5966b-af37-4ecc-977f-461bf352ff43.png)
 
 ### Test Completeness
@@ -91,6 +92,11 @@ I utilise mutation testing via the [Mutant gem](https://github.com/mbj/mutant) t
 Mutation testing works by changing the code slightly in a variety of ways to cause it to break, creating a "mutant" for each variety, and running the tests against the "mutant". If the tests continue to pass, then it indicates that the tests are not complete.
 
 This method is a more precise way of checking test completeness than code coverage as relying on code coverage could lead to false positives.
+
+#### Mutant Report
+
+![mark_agbuya_L5872___personal_code_toy_robot_simulator](https://user-images.githubusercontent.com/4326858/162624392-32d88d67-2c84-4c68-a77f-662395c583d6.png)
+
 
 ### Linting
 
