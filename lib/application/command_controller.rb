@@ -1,10 +1,11 @@
 require "application/request"
 require "application/commands/place"
 
-##
-# This CommandCoordinator class is reponsible for executing the commands.
-# It is the layer in between the application and the domain that calls the domain methods on the aggregate root
 module Application
+  ##
+  # This CommandCoordinator class is reponsible for executing the commands.
+  # It is the layer in between the application and the domain that calls the domain methods on the aggregate root
+  #
   class CommandController
     def initialize(simulation, io)
       @simulation = simulation

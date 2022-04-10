@@ -1,6 +1,7 @@
-##
-# This Direction class can map to and from direction names and angles
 module ToyRobotSimulation
+  ##
+  # This Direction class can map to and from direction names and angles
+  #
   class Direction
     DIRECTION_TO_ANGLE = {
       NORTH: 0,

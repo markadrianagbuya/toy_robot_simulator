@@ -1,6 +1,7 @@
-##
-# This Request class captures the expected format of the request to be a command followed by params
 module Application
+  ##
+  # This Request class captures the expected format of the request to be a command followed by params
+  #
   class Request
     ParserError = Class.new(StandardError)
 

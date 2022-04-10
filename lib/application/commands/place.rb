@@ -1,8 +1,8 @@
-##
-# This Place class captures the intent of the user to place and provides the params in a convenient and purposeful manner
-
 module Application
   module Commands
+    ##
+    # This Place class captures the intent of the user to place and provides the params in a convenient and purposeful manner
+    #
     class Place
       InvalidParams = Class.new(StandardError)
 

@@ -1,11 +1,10 @@
 require "toy_robot_simulation/direction"
 require "toy_robot_simulation/movement"
 
-##
-# This robot class is aware of where it is, where it is facing, how it moves and how it turns
-#
-# It has "angle" as a base attribute for a more generic approach to movement and can possibly be extended to face in all angles and not just cardinal directions.
 module ToyRobotSimulation
+  ##
+  # This robot class is aware of where it is, where it is facing, how it moves and how it turns
+  #
   class Robot
     RIGHT_ANGLE_IN_DEGREES = 90
 

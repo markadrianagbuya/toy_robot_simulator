@@ -1,8 +1,9 @@
 require "toy_robot_simulation/translation"
 
-##
-# This Movement class encapsulates the movement logic
 module ToyRobotSimulation
+  ##
+  # This Movement class encapsulates the movement logic
+  #
   class Movement
     DIRECTION_TO_TRANSLATION = {
       NORTH: Translation.new(0, 1),
