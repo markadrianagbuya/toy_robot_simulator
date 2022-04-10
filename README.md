@@ -18,7 +18,9 @@ This solution takes into consideration a few assumptions:
 * Input is via STDIN
 * Output is via STDOUT
 * Invalid commands are ignored
+* Extra whitespace in user inputs are ignored
 * Commands are case sensitive
+* Commands are in the format: "UPCASEDCOMMAND (PARAM1,PARAM2,PARAM3)"
 
 ## Setup
 
