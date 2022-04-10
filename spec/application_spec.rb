@@ -14,7 +14,7 @@ RSpec.describe Application do
         REPORT
       INPUT
 
-      expect { run(inputs) }.to output(/Output: 0,1,NORTH/).to_stdout
+      expect { run_application(inputs) }.to output(/Output: 0,1,NORTH/).to_stdout
     end
 
     it "works with provided example (b)" do
@@ -24,7 +24,7 @@ RSpec.describe Application do
         REPORT
       INPUT
 
-      expect { run(inputs) }.to output(/Output: 0,0,WEST/).to_stdout
+      expect { run_application(inputs) }.to output(/Output: 0,0,WEST/).to_stdout
     end
 
     it "works with provided example (c)" do
@@ -37,7 +37,7 @@ RSpec.describe Application do
         REPORT
       INPUT
 
-      expect { run(inputs) }.to output(/Output: 3,3,NORTH/).to_stdout
+      expect { run_application(inputs) }.to output(/Output: 3,3,NORTH/).to_stdout
     end
 
     it "can handle the robot placed in multiple positions" do
@@ -49,7 +49,7 @@ RSpec.describe Application do
         REPORT
       INPUT
 
-      expect { run(inputs) }.to output(/Output: 1,3,NORTH/).to_stdout
+      expect { run_application(inputs) }.to output(/Output: 1,3,NORTH/).to_stdout
     end
 
     it "can handle walking in a circle" do
@@ -70,7 +70,7 @@ RSpec.describe Application do
         REPORT
       INPUT
 
-      expect { run(inputs) }.to output(/Output: 1,1,NORTH/).to_stdout
+      expect { run_application(inputs) }.to output(/Output: 1,1,NORTH/).to_stdout
     end
 
     it "ignores invalid commands before a placement" do
@@ -83,11 +83,11 @@ RSpec.describe Application do
         REPORT
       INPUT
 
-      expect { run(inputs) }.to output(/Output: 4,4,EAST/).to_stdout
+      expect { run_application(inputs) }.to output(/Output: 4,4,EAST/).to_stdout
     end
   end
 
-  def run(inputs)
+  def run_application(inputs)
     with_stubbed_stdin(inputs) do
       runner = Application.runner_with_default_configuration
 
