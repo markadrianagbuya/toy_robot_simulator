@@ -17,28 +17,24 @@ module Application
 
       request = Request.from_input(command_input)
 
-      command_handler = command_to_handler[request.command_name]
-      return unless command_handler
-
-      command_handler.call(request)
+      handle_command(request)
     end
 
     private
 
     attr_reader :simulation, :io
 
-    def command_to_handler
-      {
-        "PLACE" => ->(request) { handle_place(request) },
-        "MOVE" => ->(_request) { handle_move },
-        "LEFT" => ->(_request) { handle_left },
-        "RIGHT" => ->(_request) { handle_right },
-        "REPORT" => ->(_request) { handle_report }
-      }
+    def handle_command(request)
+      case request.command_name
+      when "PLACE" then handle_place(request.params)
+      when "MOVE" then handle_move
+      when "LEFT" then handle_left
+      when "RIGHT" then handle_right
+      when "REPORT" then handle_report
+      end
     end
 
-    def handle_place(request)
-      request_params = request.params
+    def handle_place(request_params)
       return unless Commands::Place.valid_params?(request_params)
 
       command = Commands::Place.from_params(request_params)
