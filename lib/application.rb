@@ -6,7 +6,8 @@ require "toy_robot_simulation/robot"
 require "toy_robot_simulation/board"
 
 ##
-# This Application module contains the main methods to configure the runner and application. It is the composition root.
+# This Application module contains the main methods to configure the runner and application.
+# It is the composition root that instantiates all the required objects and their dependencies.
 #
 module Application
   DEFAULT_BOARD_SIZE = 5
