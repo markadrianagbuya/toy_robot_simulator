@@ -10,11 +10,11 @@ module Application
       PARAMS_REGEX = /^(\d+),(\d+),(NORTH|EAST|SOUTH|WEST)$/
 
       class << self
-        def self.valid_params?(params)
+        def valid_params?(params)
           PARAMS_REGEX.match?(params)
         end
 
-        def self.from_params(params)
+        def from_params(params)
           raise invalid_params(params) unless valid_params?(params)
 
           x_position, y_position, direction_name = PARAMS_REGEX.match(params).captures
