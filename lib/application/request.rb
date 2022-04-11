@@ -14,10 +14,16 @@ module Application
       end
 
       def from_input(input)
-        raise ParserError.new("Input '#{input}' does not match request format") unless valid_input?(input)
+        raise parser_error(input) unless valid_input?(input)
 
         command_name, _space, params = INPUT_REGEX.match(input).captures
         new(command_name, params)
+      end
+
+      private
+
+      def parser_error(input)
+        ParserError.new("Input '#{input}' does not match request format")
       end
     end
 

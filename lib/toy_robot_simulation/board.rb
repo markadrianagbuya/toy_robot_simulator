@@ -8,12 +8,16 @@ module ToyRobotSimulation
     end
 
     def position_on_board?(position)
-      [position.x, position.y].all? { |index| index.between?(min_position_index, max_position_index) }
+      [position.x, position.y].all? { |index| within_bounds?(index) }
     end
 
     private
 
     attr_reader :size
+
+    def within_bounds?(index)
+      index.between?(min_position_index, max_position_index)
+    end
 
     def min_position_index
       0

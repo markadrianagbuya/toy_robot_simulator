@@ -9,17 +9,24 @@ module Application
     end
 
     def run
-      io.print("Welcome to the robot simulator!")
+      print_welcome_message
 
       loop do
-        io.print("Enter a command: ")
-        command_input = io.read_input
-
-        command_controller.execute(command_input)
+        command_controller.execute(read_command_input)
       end
     end
 
     private
+
+    def print_welcome_message
+      io.print("Welcome to the robot simulator!")
+    end
+
+    def read_command_input
+      io.print("Enter a command: ")
+
+      io.read_input
+    end
 
     attr_reader :io, :command_controller
   end
