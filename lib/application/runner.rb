@@ -12,7 +12,8 @@ module Application
       print_welcome_message
 
       loop do
-        command_controller.execute(read_command_input)
+        command_input = read_command_input
+        command_controller.execute(command_input)
       end
     end
 

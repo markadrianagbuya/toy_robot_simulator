@@ -15,7 +15,7 @@ module Application
         end
 
         def from_params(params)
-          raise invalid_params(params) unless valid_params?(params)
+          raise invalid_params_error(params) unless valid_params?(params)
 
           x_position, y_position, direction_name = PARAMS_REGEX.match(params).captures
 
@@ -24,7 +24,7 @@ module Application
 
         private
 
-        def invalid_params(params)
+        def invalid_params_error(params)
           InvalidParams.new("Cannot parse params: '#{params}'")
         end
       end
