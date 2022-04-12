@@ -40,7 +40,7 @@ module ToyRobotSimulation
     end
 
     def position_ahead
-      Movement.advance(position, direction.name)
+      Movement.advance(position, direction.angle)
     end
 
     private
