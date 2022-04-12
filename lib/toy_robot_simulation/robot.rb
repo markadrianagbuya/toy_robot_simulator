@@ -1,13 +1,11 @@
-require "toy_robot_simulation/direction"
-require "toy_robot_simulation/movement"
+require 'toy_robot_simulation/direction'
+require 'toy_robot_simulation/movement'
 
 module ToyRobotSimulation
   ##
   # This robot class is aware of where it is, where it is facing, how it moves and how it turns
   #
   class Robot
-    RIGHT_ANGLE_IN_DEGREES = 90
-
     attr_reader :direction, :position
 
     def x_position
@@ -32,22 +30,15 @@ module ToyRobotSimulation
     end
 
     def turn_left
-      rotate(-RIGHT_ANGLE_IN_DEGREES)
+      @direction = Movement.rotate_left(direction)
     end
 
     def turn_right
-      rotate(RIGHT_ANGLE_IN_DEGREES)
+      @direction = Movement.rotate_right(direction)
     end
 
     def position_ahead
       Movement.advance(position, direction.angle)
-    end
-
-    private
-
-    def rotate(angle)
-      new_angle = direction.angle + angle
-      @direction = Direction.from_angle(new_angle)
     end
   end
 end
