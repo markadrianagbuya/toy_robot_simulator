@@ -17,9 +17,7 @@ module ToyRobotSimulation
     end
 
     def report
-      return unless robot.placed?
-
-      "Output: #{robot.x_position},#{robot.y_position},#{robot.direction_name}"
+      robot.report
     end
 
     def place_robot(x_position, y_position, direction_name)
@@ -32,24 +30,18 @@ module ToyRobotSimulation
     end
 
     def move_robot
-      return unless robot.placed?
-
       next_position = robot.position_ahead
 
-      return unless board.position_on_board?(next_position)
+      return if !next_position || !board.position_on_board?(next_position)
 
       robot.place(next_position, robot.direction)
     end
 
     def turn_robot_left
-      return unless robot.placed?
-
       robot.turn_left
     end
 
     def turn_robot_right
-      return unless robot.placed?
-
       robot.turn_right
     end
 
