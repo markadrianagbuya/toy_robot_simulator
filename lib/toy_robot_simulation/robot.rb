@@ -8,6 +8,12 @@ module ToyRobotSimulation
   class Robot
     attr_reader :direction, :position
 
+    def self.placed(position, direction)
+      Robot.new.tap do |robot|
+        robot.place(position, direction)
+      end
+    end
+
     def x_position
       position&.x
     end
@@ -39,6 +45,10 @@ module ToyRobotSimulation
 
     def position_ahead
       Movement.advance(position, direction.angle)
+    end
+
+    def report
+      "Output: #{x_position},#{y_position},#{direction_name}"
     end
   end
 end

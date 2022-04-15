@@ -21,8 +21,7 @@ module Application
   end
 
   def self.default_simulation
-    robot = ToyRobotSimulation::Robot.new
     board = ToyRobotSimulation::Board.new(DEFAULT_BOARD_SIZE)
-    ToyRobotSimulation::Simulation.new(robot, board)
+    ToyRobotSimulation::Simulation.new(nil, board)
   end
 end
