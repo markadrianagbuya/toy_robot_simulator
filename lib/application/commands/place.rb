@@ -36,6 +36,15 @@ module Application
         @y_position = y_position
         @direction_name = direction_name
       end
+
+      def position
+        Position.new(x_position, y_position)
+      end
+
+      def direction
+        Direction.from_name(direction_name)
+      end
+
     end
   end
 end

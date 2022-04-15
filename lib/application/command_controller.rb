@@ -39,7 +39,7 @@ module Application
 
       command = Commands::Place.from_params(request_params)
 
-      simulation.place_robot(command.x_position, command.y_position, command.direction_name)
+      simulation.place_robot(command)
     end
 
     def handle_move

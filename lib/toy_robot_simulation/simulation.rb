@@ -11,8 +11,8 @@ module ToyRobotSimulation
   # It does not contain any logic about the application and is designed in such a way that it can be used in many types of applications
   #
   class Simulation
-    def initialize(robot = UnplacedRobot.new, board)
-      @robot = robot || UnplacedRobot.new
+    def initialize(board)
+      @robot = UnplacedRobot.new
       @board = board
     end
 
@@ -20,13 +20,12 @@ module ToyRobotSimulation
       robot.report
     end
 
-    def place_robot(x_position, y_position, direction_name)
-      position = Position.new(x_position, y_position)
-      direction = Direction.from_name(direction_name)
+    def place_robot(place_command)
+      position = place_command.position
 
       return unless board.position_on_board?(position)
 
-      @robot = Robot.placed(position, direction)
+      @robot = Robot.placed(position, place_command.direction)
     end
 
     def move_robot
@@ -47,6 +46,7 @@ module ToyRobotSimulation
 
     private
 
+    # This is a null object to represent when the robot is not placed yet
     class UnplacedRobot
 
       def x_position
@@ -58,7 +58,7 @@ module ToyRobotSimulation
       def direction_name
       end
 
-      def place(position, direction)
+      def place(_position, _direction)
       end
 
       def turn_left
